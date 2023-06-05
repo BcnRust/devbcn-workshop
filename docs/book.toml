@@ -1,0 +1,24 @@
+[book]
+authors = ["Alberto Méndez", "Roberto Huertas"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Rust Full Stack Workshop"
+
+[build]
+create-missing = false
+
+[output.html]
+default-theme = "rust"
+preferred-dark-theme = "ayu"
+# copy-fonts = true
+# additional-css = ["custom.css", "custom2.css"]
+# additional-js = ["custom.js"]
+# no-section-label = false
+git-repository-url = "https://github.com/bcnrust/devbcn-workshop"
+# git-repository-icon = "fa-github"
+# edit-url-template = "https://github.com/rust-lang/mdBook/edit/master/guide/{path}"
+# site-url = "/example-book/"
+# cname = "myproject.rs"
+# input-404 = "not-found.md"
+
