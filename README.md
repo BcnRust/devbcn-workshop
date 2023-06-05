@@ -1,5 +1,7 @@
 # Building a Movie Collection Manager - Full Stack Workshop with Rust, Actix, SQLx, Dioxus, and Shuttle
-
+<center>
+<img src="assets/movie_collection.jpg" />
+</center>
 
 Welcome to the this workshop! In this hands-on workshop, we will guide you through the process of building a full stack application using Rust for the API, Actix-Web as the web framework, SQLx for database connectivity, Dioxus for the front-end, and Shuttle for deployment. This workshop assumes that you have a basic understanding of Rust and its syntax.
 
