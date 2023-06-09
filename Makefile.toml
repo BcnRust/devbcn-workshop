@@ -1,0 +1,52 @@
+[tasks.shuttle]
+workspace = false
+env = { "RUST_LOG"="trace" }
+install_crate = "cargo-shuttle"
+command = "cargo"
+args = ["shuttle", "run"]
+
+[tasks.serve]
+workspace = false
+script_runner = "@shell"
+script = '''
+cd front
+dioxus serve
+'''
+
+# [tasks.serve]
+# workspace = false
+# script_runner = "@shell"
+# script = '''
+# cd front
+# rm -rf dist
+# mkdir -p dist/assets/images
+# cp -a src/images/* dist/assets/images/
+# dioxus serve
+# '''
+
+# [tasks.front]
+# workspace = false
+# script_runner = "@shell"
+# script = '''
+# rm -rf static
+# mkdir static
+# cd front
+# dioxus build --release
+# mkdir -p dist/assets/images
+# cp -a src/images/* dist/assets/images/
+# cp -r dist/* ../static
+# rm -rf dist
+# '''
+
+[tasks.clippy]
+workspace = false
+install_crate = "cargo-clippy"
+command = "cargo"
+args = ["clippy"]
+
+[tasks.format]
+clear = true
+workspace = false
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--all", "--", "--check"]
