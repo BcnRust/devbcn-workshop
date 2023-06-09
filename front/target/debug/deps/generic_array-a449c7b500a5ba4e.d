@@ -1,0 +1,11 @@
+/home/piny4man/DEV/github/devbcn-workshop/front/target/debug/deps/generic_array-a449c7b500a5ba4e.rmeta: /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/lib.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/hex.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/impls.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/arr.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/functional.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/iter.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/sequence.rs
+
+/home/piny4man/DEV/github/devbcn-workshop/front/target/debug/deps/generic_array-a449c7b500a5ba4e.d: /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/lib.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/hex.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/impls.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/arr.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/functional.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/iter.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/sequence.rs
+
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/lib.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/hex.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/impls.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/arr.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/functional.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/iter.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.7/src/sequence.rs:

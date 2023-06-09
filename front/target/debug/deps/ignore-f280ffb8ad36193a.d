@@ -1,0 +1,12 @@
+/home/piny4man/DEV/github/devbcn-workshop/front/target/debug/deps/ignore-f280ffb8ad36193a.rmeta: /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/lib.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/default_types.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/dir.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/gitignore.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/overrides.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/pathutil.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/types.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/walk.rs
+
+/home/piny4man/DEV/github/devbcn-workshop/front/target/debug/deps/ignore-f280ffb8ad36193a.d: /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/lib.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/default_types.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/dir.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/gitignore.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/overrides.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/pathutil.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/types.rs /home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/walk.rs
+
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/lib.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/default_types.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/dir.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/gitignore.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/overrides.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/pathutil.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/types.rs:
+/home/piny4man/.cargo/registry/src/github.com-1ecc6299db9ec823/ignore-0.4.20/src/walk.rs:
