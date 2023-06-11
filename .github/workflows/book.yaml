@@ -36,10 +36,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
+      - name: Getting cargo make
+        uses: davidB/rust-cargo-make@v1
+
       - name: Build with mdBook
-        run: |
-          cd docs
-          mdbook build
+        run: cargo make book-build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
