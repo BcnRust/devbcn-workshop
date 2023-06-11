@@ -60,7 +60,7 @@ By the end of the workshop, you will have built a functional movie collection ma
 
 ```bash
 ├── api            # Rust API code
-├── frontend       # Dioxus front-end code
+├── front          # Dioxus front-end code
 └── README.md      # Workshop instructions and guidance
 ```
 

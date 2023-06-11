@@ -1,28 +1,18 @@
-[tasks.shuttle]
+# project tasks
+[tasks.api-run]
 workspace = false
 env = { RUST_LOG="trace" }
 install_crate = "cargo-shuttle"
 command = "cargo"
 args = ["shuttle", "run"]
 
-[tasks.serve]
+[tasks.front-serve]
 workspace = false
-script_runner = "@shell"
-script = '''
-cd front
-dioxus serve
-'''
+cwd = "./front"
+install_crate = "dioxus-cli"
+command = "dioxus"
+args = ["serve"]
 
-# [tasks.serve]
-# workspace = false
-# script_runner = "@shell"
-# script = '''
-# cd front
-# rm -rf dist
-# mkdir -p dist/assets/images
-# cp -a src/images/* dist/assets/images/
-# dioxus serve
-# '''
 
 # [tasks.front]
 # workspace = false
@@ -38,6 +28,7 @@ dioxus serve
 # rm -rf dist
 # '''
 
+# general tasks
 [tasks.clippy]
 workspace = false
 install_crate = "cargo-clippy"
@@ -52,7 +43,6 @@ command = "cargo"
 args = ["fmt", "--all", "--", "--check"]
 
 # book tasks
-
 [tasks.book-serve]
 workspace = false
 cwd = "./docs"
