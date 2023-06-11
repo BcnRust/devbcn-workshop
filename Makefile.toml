@@ -43,16 +43,30 @@ command = "cargo"
 args = ["fmt", "--all", "--", "--check"]
 
 # book tasks
+[tasks.book-readme]
+workspace = false
+script_runner = "@shell"
+script = '''
+cp README.md docs/src/README.md
+'''
+
+[tasks.book-build]
+run_task = { name = ["book-readme", "book-build-inner"] }
+
 [tasks.book-serve]
+run_task = { name = ["book-readme", "book-serve-inner"] }
+
+[tasks.book-build-inner]
+workspace = false
+cwd = "./docs"
+install_crate = "mdbook"
+command = "mdbook"
+args = ["build"]
+
+[tasks.book-serve-inner]
 workspace = false
 cwd = "./docs"
 install_crate = "mdbook"
 command = "mdbook"
 args = ["serve"]
 
-[tasks.book-build]
-workspace = false
-cwd = "./docs"
-install_crate = "mdbook"
-command = "mdbook"
-args = ["build"]
