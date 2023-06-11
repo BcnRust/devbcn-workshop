@@ -48,6 +48,7 @@ workspace = false
 script_runner = "@shell"
 script = '''
 cp README.md docs/src/README.md
+sed -i 's/\.\/docs\/src\//\.\//g' docs/src/README.md
 '''
 
 [tasks.book-build]
