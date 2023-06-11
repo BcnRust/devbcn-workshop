@@ -1,6 +1,6 @@
 [tasks.shuttle]
 workspace = false
-env = { "RUST_LOG"="trace" }
+env = { RUST_LOG="trace" }
 install_crate = "cargo-shuttle"
 command = "cargo"
 args = ["shuttle", "run"]
@@ -50,3 +50,19 @@ workspace = false
 install_crate = "rustfmt"
 command = "cargo"
 args = ["fmt", "--all", "--", "--check"]
+
+# book tasks
+
+[tasks.book-serve]
+workspace = false
+cwd = "./docs"
+install_crate = "mdbook"
+command = "mdbook"
+args = ["serve"]
+
+[tasks.book-build]
+workspace = false
+cwd = "./docs"
+install_crate = "mdbook"
+command = "mdbook"
+args = ["build"]
