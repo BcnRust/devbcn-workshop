@@ -6,7 +6,7 @@ src = "src"
 title = "Rust Full Stack Workshop"
 
 [build]
-create-missing = false
+create-missing = true
 
 [output.html]
 default-theme = "rust"

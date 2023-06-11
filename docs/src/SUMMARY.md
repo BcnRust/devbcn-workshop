@@ -2,4 +2,8 @@
 
 [Introduction](./README.md)
 
-- [Chapter 1](./chapter_1.md)
+# Before you start
+
+- [Prerequisites](./01_prerequisites.md)
+
+<!-- # Getting started -->
