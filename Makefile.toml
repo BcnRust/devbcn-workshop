@@ -60,6 +60,9 @@ cargo install mdbook-admonish
 cargo install mdbook-toc
 '''
 
+[tasks.book-build-ci]
+run_task = { name = [ "book-readme", "book-build-inner"] }
+
 [tasks.book-build]
 run_task = { name = ["book-preprocessors", "book-readme", "book-build-inner"] }
 
