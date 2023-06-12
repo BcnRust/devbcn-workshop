@@ -32,10 +32,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      # - name: Setup mdBook
+      #   uses: peaceiris/actions-mdbook@v1
+      #   with:
+      #     mdbook-version: 'latest'
       - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1
+        uses: jontze/action-mdbook@v2
         with:
-          mdbook-version: 'latest'
+          token: ${{secrets.GITHUB_TOKEN}}
+          use-linkcheck: false
+          use-mermaid: true
+          use-toc: true
+          use-opengh: false
+          use-admonish: true
+          use-katex: false
 
       - name: Setup Pages
         uses: actions/configure-pages@v3

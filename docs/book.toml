@@ -16,6 +16,22 @@ preferred-dark-theme = "ayu"
 # additional-js = ["custom.js"]
 # no-section-label = false
 git-repository-url = "https://github.com/bcnrust/devbcn-workshop"
+additional-js = ["src/assets/mermaid.min.js", "src/assets/mermaid-init.js"]
+additional-css = ["src/assets/mdbook-admonish.css"]
+
+[preprocessor]
+
+[preprocessor.toc]
+command = "mdbook-toc"
+renderer = ["html"]
+max-level = 4
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "2.0.1" # do not edit: managed by `mdbook-admonish install`
 # git-repository-icon = "fa-github"
 # edit-url-template = "https://github.com/rust-lang/mdBook/edit/master/guide/{path}"
 # site-url = "/example-book/"

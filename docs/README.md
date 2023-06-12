@@ -8,3 +8,13 @@ To avoid having to do this manually, and because we want to keep the root `READM
 
 - `makers book-serve`
 - `makers book-build`
+
+## Preprocessors
+
+We are using some mdbook plugins:
+
+- [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid)
+- [mdbook-toc](https://github.com/badboy/mdbook-toc)
+- [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish)
+
+If you use the `cargo-make` commands above, you don't need to worry about installing them, as they will be installed automatically.

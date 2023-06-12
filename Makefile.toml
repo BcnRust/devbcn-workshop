@@ -51,11 +51,20 @@ cp README.md docs/src/README.md
 sed -i 's/\.\/docs\/src\//\.\//g' docs/src/README.md
 '''
 
+[tasks.book-preprocessors]
+workspace = false
+script_runner = "@shell"
+script = '''
+cargo install mdbook-mermaid
+cargo install mdbook-admonish
+cargo install mdbook-toc
+'''
+
 [tasks.book-build]
-run_task = { name = ["book-readme", "book-build-inner"] }
+run_task = { name = ["book-preprocessors", "book-readme", "book-build-inner"] }
 
 [tasks.book-serve]
-run_task = { name = ["book-readme", "book-serve-inner"] }
+run_task = { name = ["book-preprocessors", "book-readme", "book-serve-inner"] }
 
 [tasks.book-build-inner]
 workspace = false
