@@ -54,7 +54,7 @@ jobs:
         uses: davidB/rust-cargo-make@v1
 
       - name: Build with mdBook
-        run: cargo make book-build
+        run: cargo make book-build-ci
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
