@@ -9,7 +9,7 @@ title = "Rust Full Stack Workshop"
 create-missing = true
 
 [output.html]
-default-theme = "rust"
+default-theme = "light"
 preferred-dark-theme = "ayu"
 # copy-fonts = true
 # additional-css = ["custom.css", "custom2.css"]
