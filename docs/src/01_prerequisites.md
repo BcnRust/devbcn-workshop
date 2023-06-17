@@ -6,6 +6,19 @@ In order to start the workshop there are a few things that we will have to **ins
 
 If you don't have [Rust](https://www.rust-lang.org) installed in your machine yet, please follow [these instructions](https://www.rust-lang.org/tools/install).
 
+## Visual Studio Code
+
+You can use whatever IDE you want but we're going to use [Visual Studio Code](https://code.visualstudio.com/) as our **code editor**.
+
+If you're going to use [Visual Studio Code](https://code.visualstudio.com/) as well, please install the following extensions:
+
+- [Rust Analyzer](https://marketplace.visualstudio.com/items?itemName=matklad.rust-analyzer)
+- [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb)
+- [Crates](https://marketplace.visualstudio.com/items?itemName=serayuzgur.crates)
+- [Better TOML](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
+- [Rust Test Explorer](https://marketplace.visualstudio.com/items?itemName=swellaby.vscode-rust-test-adapter)
+- [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+
 ## Shuttle
 
 This is the [tool and platform](https://shuttle.rs) that we're going to use to deploy our **backend** (api & database).
