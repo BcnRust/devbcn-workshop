@@ -61,12 +61,15 @@ cargo install mdbook-toc
 '''
 
 [tasks.book-build-ci]
+workspace = false
 run_task = { name = [ "book-readme", "book-build-inner"] }
 
 [tasks.book-build]
+workspace = false
 run_task = { name = ["book-preprocessors", "book-readme", "book-build-inner"] }
 
 [tasks.book-serve]
+workspace = false
 run_task = { name = ["book-preprocessors", "book-readme", "book-serve-inner"] }
 
 [tasks.book-build-inner]
