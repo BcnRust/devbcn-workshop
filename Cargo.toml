@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "api",
+    "front",
+    "shared"
+]
