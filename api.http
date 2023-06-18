@@ -1,11 +1,11 @@
-# @host = https://devbcn.shuttleapp.rs
-@host = http://localhost:8000
+@host = https://devbcn.shuttleapp.rs
+# @host = http://localhost:8000
 
 ### health
 GET {{host}}/health HTTP/1.1
 
 ### create film
-POST {{host}}/v1/films/ HTTP/1.1
+POST {{host}}/v1/films HTTP/1.1
 Content-Type: application/json
 
 {    
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ### update film
-PUT {{host}}/v1/films/ HTTP/1.1
+PUT {{host}}/v1/films HTTP/1.1
 Content-Type: application/json
 
 {    
@@ -36,4 +36,4 @@ GET {{host}}/v1/films/356e42a8-e659-406f-98 HTTP/1.1
 
 
 ### delete film
-DELETE  {{host}}/v1/films/356e42a8-e659-406f-98bb-6124414675e8 HTTP/1.1
+DELETE {{host}}/v1/films/356e42a8-e659-406f-98bb-6124414675e8 HTTP/1.1
