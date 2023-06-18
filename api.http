@@ -1,0 +1,39 @@
+# @host = https://devbcn.shuttleapp.rs
+@host = http://localhost:8000
+
+### health
+GET {{host}}/health HTTP/1.1
+
+### create film
+POST {{host}}/v1/films/ HTTP/1.1
+Content-Type: application/json
+
+{    
+    "id": "356e42a8-e659-406f-98bb-6124414675e8",
+    "title": "Death in Venice",
+    "director": "Luchino Visconti",
+    "year": 1971,
+    "poster": "https://th.bing.com/th/id/R.0d441f68f2182fd7c129f4e79f6a66ef?rik=h0j7Ecvt7NBYrg&pid=ImgRaw&r=0"
+}
+
+### update film
+PUT {{host}}/v1/films/ HTTP/1.1
+Content-Type: application/json
+
+{    
+    "id": "356e42a8-e659-406f-98bb-6124414675e8",
+    "title": "Death in Venice",
+    "director": "Benjamin Britten",
+    "year": 1981,
+    "poster": "https://image.tmdb.org/t/p/original//tmT12hTzJorZxd9M8YJOQOJCqsP.jpg"
+}
+
+### get film
+GET {{host}}/v1/films/356e42a8-e659-406f-98bb-6124414675e8 HTTP/1.1
+
+### get bad film
+GET {{host}}/v1/films/356e42a8-e659-406f-98 HTTP/1.1
+
+
+### delete film
+DELETE  {{host}}/v1/films/356e42a8-e659-406f-98bb-6124414675e8 HTTP/1.1
