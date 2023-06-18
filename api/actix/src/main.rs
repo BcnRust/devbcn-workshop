@@ -29,10 +29,14 @@ async fn main() -> std::io::Result<()> {
     tracing::info!("🚀🚀🚀 Starting Actix server at {}", address);
 
     HttpServer::new(move || {
-        App::new()
-            .app_data(repo.clone())
-            .configure(api_lib::health::service)
-            .configure(api_lib::v1::service::<api_lib::film_repository::PostgresFilmRepository>)
+        App::new().service(
+            web::scope("/api")
+                .app_data(repo.clone())
+                .configure(api_lib::health::service)
+                .configure(
+                    api_lib::v1::service::<api_lib::film_repository::PostgresFilmRepository>,
+                ),
+        )
     })
     .bind(&address)
     .unwrap_or_else(|err| {
