@@ -77,7 +77,7 @@ impl FilmRepository for PostgresFilmRepository {
     }
 
     async fn delete_film(&self, film_id: &uuid::Uuid) -> FilmResult<Uuid> {
-        let result = sqlx::query_as::<_, Film>(
+        let result = sqlx::query_scalar::<_, Uuid>(
             r#"
         DELETE FROM films
         WHERE id = $1
@@ -88,7 +88,6 @@ impl FilmRepository for PostgresFilmRepository {
         .fetch_one(&self.pool)
         .await
         .map_err(|e| e.to_string());
-        // TODO: (ROB) check what happens with this
-        result.map(|film| film.id)
+        result
     }
 }
