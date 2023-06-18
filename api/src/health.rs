@@ -9,7 +9,7 @@ pub fn service(cfg: &mut ServiceConfig) {
 
 async fn health_check() -> HttpResponse {
     HttpResponse::Ok()
-        .append_header(("health-check", "devbcn-workshop:is_ok"))
+        .append_header(("health-check", "v0.0.1"))
         .finish()
 }
 
