@@ -41,7 +41,7 @@ impl FilmRepository for PostgresFilmRepository {
         .bind(film.id)
         .bind(&film.title)
         .bind(&film.director)
-        .bind(film.year)
+        .bind(film.year as i16)
         .bind(&film.poster)
         .fetch_one(&self.pool)
         .await
@@ -60,7 +60,7 @@ impl FilmRepository for PostgresFilmRepository {
         .bind(film.id)
         .bind(&film.title)
         .bind(&film.director)
-        .bind(film.year)
+        .bind(film.year as i16)
         .bind(&film.poster)
         .fetch_one(&self.pool)
         .await

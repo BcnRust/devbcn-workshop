@@ -7,8 +7,8 @@ pub struct Film {
     pub title: String,
     pub director: String,
     #[sqlx(try_from = "i16")]
-    pub year: i16,
+    pub year: u16,
     pub poster: String,
-    created_at: Option<chrono::DateTime<chrono::Utc>>,
-    updated_at: Option<chrono::DateTime<chrono::Utc>>,
+    pub created_at: Option<chrono::DateTime<chrono::Utc>>,
+    pub updated_at: Option<chrono::DateTime<chrono::Utc>>,
 }

@@ -52,3 +52,97 @@ async fn delete<R: FilmRepository>(film_id: web::Path<Uuid>, repo: web::Data<R>)
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+
+    use super::*;
+    use crate::film_repository::MockFilmRepository;
+    use actix_web::body::to_bytes;
+    use chrono::Utc;
+
+    pub fn create_test_film(id: Uuid, title: String) -> Film {
+        Film {
+            id,
+            title,
+            director: "Director test name".to_string(),
+            year: 2001,
+            poster: "Poster test name".to_string(),
+            created_at: Some(Utc::now()),
+            updated_at: None,
+        }
+    }
+
+    #[actix_rt::test]
+    async fn get_works() {
+        let film_id = uuid::Uuid::new_v4();
+        let film_title = "Film test title";
+
+        let mut repo = MockFilmRepository::default();
+        repo.expect_get_film().returning(move |id| {
+            let film = create_test_film(*id, film_title.to_string());
+            Ok(film)
+        });
+
+        let result = get(web::Path::from(film_id), web::Data::new(repo)).await;
+
+        let body = to_bytes(result.into_body()).await.unwrap();
+        let film = serde_json::from_slice::<'_, Film>(&body).unwrap();
+
+        assert_eq!(film.id, film_id);
+        assert_eq!(film.title, film_title);
+    }
+
+    #[actix_rt::test]
+    async fn create_works() {
+        let film_id = uuid::Uuid::new_v4();
+        let film_title = "Film test title";
+        let new_film = create_test_film(film_id, film_title.to_string());
+
+        let mut repo = MockFilmRepository::default();
+        repo.expect_create_film()
+            .returning(|film| Ok(film.to_owned()));
+
+        let result = post(web::Json(new_film), web::Data::new(repo)).await;
+
+        let body = to_bytes(result.into_body()).await.unwrap();
+        let film = serde_json::from_slice::<'_, Film>(&body).unwrap();
+
+        assert_eq!(film.id, film_id);
+        assert_eq!(film.title, film_title);
+    }
+
+    #[actix_rt::test]
+    async fn update_works() {
+        let film_id = uuid::Uuid::new_v4();
+        let film_title = "Film test title";
+        let new_film = create_test_film(film_id, film_title.to_string());
+
+        let mut repo = MockFilmRepository::default();
+        repo.expect_update_film()
+            .returning(|film| Ok(film.to_owned()));
+
+        let result = put(web::Json(new_film), web::Data::new(repo)).await;
+
+        let body = to_bytes(result.into_body()).await.unwrap();
+        let film = serde_json::from_slice::<'_, Film>(&body).unwrap();
+
+        assert_eq!(film.id, film_id);
+        assert_eq!(film.title, film_title);
+    }
+
+    #[actix_rt::test]
+    async fn delete_works() {
+        let film_id = uuid::Uuid::new_v4();
+
+        let mut repo = MockFilmRepository::default();
+        repo.expect_delete_film().returning(|id| Ok(id.to_owned()));
+
+        let result = delete(web::Path::from(film_id), web::Data::new(repo)).await;
+
+        let body = to_bytes(result.into_body()).await.unwrap();
+        let uuid = serde_json::from_slice::<'_, Uuid>(&body).unwrap();
+
+        assert_eq!(uuid, film_id);
+    }
+}

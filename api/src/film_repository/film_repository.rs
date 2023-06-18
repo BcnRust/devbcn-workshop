@@ -5,6 +5,7 @@ use uuid::Uuid;
 pub type FilmError = String;
 pub type FilmResult<T> = Result<T, FilmError>;
 
+#[cfg_attr(test, mockall::automock)]
 #[async_trait]
 pub trait FilmRepository: Send + Sync + 'static {
     async fn get_film(&self, id: &Uuid) -> FilmResult<Film>;
