@@ -18,9 +18,14 @@ async fn actix_web(
 
     // start the service
     let config = move |cfg: &mut ServiceConfig| {
-        cfg.app_data(film_repository)
-            .configure(api_lib::health::service)
-            .configure(api_lib::v1::service::<api_lib::film_repository::PostgresFilmRepository>);
+        cfg.service(
+            web::scope("/api")
+                .app_data(film_repository)
+                .configure(api_lib::health::service)
+                .configure(
+                    api_lib::v1::service::<api_lib::film_repository::PostgresFilmRepository>,
+                ),
+        );
     };
 
     Ok(config.into())
