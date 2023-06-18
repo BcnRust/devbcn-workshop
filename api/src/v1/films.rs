@@ -13,9 +13,9 @@ pub fn service<R: FilmRepository>(cfg: &mut ServiceConfig) {
             // GET
             .route("/{film_id}", web::get().to(get::<R>))
             // POST
-            .route("/", web::post().to(post::<R>))
+            .route("", web::post().to(post::<R>))
             // PUT
-            .route("/", web::put().to(put::<R>))
+            .route("", web::put().to(put::<R>))
             // DELETE
             .route("/{film_id}", web::delete().to(delete::<R>)),
     );
