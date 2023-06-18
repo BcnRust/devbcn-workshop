@@ -6,13 +6,17 @@ install_crate = "cargo-shuttle"
 command = "cargo"
 args = ["shuttle", "run"]
 
+[tasks.api-run-actix]
+workspace = false
+command = "cargo"
+args = ["run", "--bin", "api-actix"]
+
 [tasks.front-serve]
 workspace = false
 cwd = "./front"
 install_crate = "dioxus-cli"
 command = "dioxus"
 args = ["serve"]
-
 
 # [tasks.front]
 # workspace = false

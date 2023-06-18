@@ -11,6 +11,7 @@ pub fn service<R: FilmRepository>(cfg: &mut ServiceConfig) {
     cfg.service(
         web::scope("/films")
             // GET
+            .route("", web::get().to(get_all::<R>))
             .route("/{film_id}", web::get().to(get::<R>))
             // POST
             .route("", web::post().to(post::<R>))
@@ -19,6 +20,13 @@ pub fn service<R: FilmRepository>(cfg: &mut ServiceConfig) {
             // DELETE
             .route("/{film_id}", web::delete().to(delete::<R>)),
     );
+}
+
+async fn get_all<R: FilmRepository>(repo: web::Data<R>) -> HttpResponse {
+    match repo.get_films().await {
+        Ok(films) => HttpResponse::Ok().json(films),
+        Err(e) => HttpResponse::NotFound().body(format!("Internal server error: {:?}", e)),
+    }
 }
 
 async fn get<R: FilmRepository>(film_id: web::Path<Uuid>, repo: web::Data<R>) -> HttpResponse {
@@ -71,6 +79,29 @@ mod tests {
             created_at: Some(Utc::now()),
             updated_at: None,
         }
+    }
+
+    #[actix_rt::test]
+    async fn get_all_works() {
+        let film_id = uuid::Uuid::new_v4();
+        let film_title1 = "Film test title1";
+        let film_title2 = "Film test title2";
+
+        let mut repo = MockFilmRepository::default();
+        repo.expect_get_films().returning(move || {
+            let film = create_test_film(film_id, film_title1.to_string());
+            let film2 = create_test_film(film_id, film_title2.to_string());
+            Ok(vec![film, film2])
+        });
+
+        let result = get_all(web::Data::new(repo)).await;
+
+        let body = to_bytes(result.into_body()).await.unwrap();
+        let films = serde_json::from_slice::<'_, Vec<Film>>(&body).unwrap();
+
+        assert_eq!(films.len(), 2);
+        assert_eq!(films[0].title, film_title1);
+        assert_eq!(films[1].title, film_title2);
     }
 
     #[actix_rt::test]

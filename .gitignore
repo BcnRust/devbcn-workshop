@@ -1,3 +1,4 @@
 target/
 dist/
 Secrets.toml
+.env
