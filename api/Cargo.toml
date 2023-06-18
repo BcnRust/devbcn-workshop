@@ -21,7 +21,8 @@ shared = { version = "0.1.0", path = "../shared" }
 shuttle-runtime = "0.18.0"
 shuttle-actix-web = "0.18.0"
 # db
-shuttle-aws-rds = { version = "0.18.0", features = ["postgres"] }
+# shuttle-aws-rds = { version = "0.18.0", features = ["postgres"] }
+shuttle-shared-db = { version = "0.18.0", features = ["postgres"] }
 sqlx = { version = "0.6.3", default-features = false, features = [ "runtime-tokio-native-tls", "macros", "postgres", "uuid", "chrono", "json", "offline"] }
 # static files
 shuttle-static-folder = "0.18.0"
