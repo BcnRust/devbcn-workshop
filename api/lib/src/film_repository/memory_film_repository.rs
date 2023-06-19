@@ -203,6 +203,18 @@ mod tests {
     }
 
     #[actix_rt::test]
+    async fn get_film_fails_if_file_is_not_present() {
+        let film_update = create_test_film("2");
+
+        let repo = MemoryFilmRepository::default();
+        let result = repo.update_film(&film_update).await;
+
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.contains("does not exist"));
+    }
+
+    #[actix_rt::test]
     async fn create_film_works() {
         let store = RwLock::new(HashMap::new());
         let mut film = create_test_film("1");
