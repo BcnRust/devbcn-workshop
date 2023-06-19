@@ -128,3 +128,176 @@ impl FilmRepository for MemoryFilmRepository {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::MemoryFilmRepository;
+    use crate::film_repository::FilmRepository;
+    use shared::models::Film;
+    use std::{collections::HashMap, sync::RwLock};
+
+    fn create_test_film(id: &'static str) -> Film {
+        Film {
+            id: uuid::Uuid::new_v4(),
+            title: format!("title-{}", id),
+            director: format!("director-{}", id),
+            poster: format!("poster-{}", id),
+            year: 2001,
+            created_at: Some(chrono::Utc::now()),
+            updated_at: None,
+        }
+    }
+
+    #[actix_rt::test]
+    async fn repo_must_be_empty_on_new() {
+        let repo = MemoryFilmRepository::new();
+        let result = repo.get_films().await;
+
+        assert!(result.is_ok());
+        let result = result.unwrap();
+        assert_eq!(result.len(), 0);
+    }
+
+    #[actix_rt::test]
+    async fn repo_must_be_empty_on_default() {
+        let repo = MemoryFilmRepository::default();
+        let result = repo.get_films().await;
+
+        assert!(result.is_ok());
+        let result = result.unwrap();
+        assert_eq!(result.len(), 0);
+    }
+
+    #[actix_rt::test]
+    async fn get_films_works() {
+        let store = RwLock::new(HashMap::new());
+        let film1 = create_test_film("1");
+        let film2 = create_test_film("2");
+        {
+            let mut store = store.write().unwrap();
+            store.insert(film1.id, film1.clone());
+            store.insert(film2.id, film2.clone());
+        }
+
+        let repo = MemoryFilmRepository { films: store };
+        let result = repo.get_films().await;
+
+        assert!(result.is_ok());
+        let result = result.unwrap();
+        assert_eq!(result.len(), 2);
+        assert!(result.iter().any(|f| f.id == film1.id));
+        assert!(result.iter().any(|f| f.id == film2.id));
+    }
+
+    #[actix_rt::test]
+    async fn get_film_works() {
+        let store = RwLock::new(HashMap::new());
+        let film = create_test_film("1");
+        store.write().unwrap().insert(film.id, film.clone());
+
+        let repo = MemoryFilmRepository { films: store };
+        let result = repo.get_film(&film.id).await;
+
+        assert!(result.is_ok());
+        assert_eq!(result.unwrap(), film);
+    }
+
+    #[actix_rt::test]
+    async fn create_film_works() {
+        let store = RwLock::new(HashMap::new());
+        let mut film = create_test_film("1");
+        film.created_at = None;
+
+        let repo = MemoryFilmRepository { films: store };
+        let result = repo.create_film(&film).await;
+
+        assert!(result.is_ok());
+        let created_file = result.unwrap();
+        assert_eq!(created_file.id, film.id);
+        assert_eq!(created_file.title, film.title);
+        assert_eq!(created_file.director, film.director);
+        assert_eq!(created_file.poster, film.poster);
+        assert_eq!(created_file.year, film.year);
+        assert!(created_file.created_at.is_some());
+    }
+
+    #[actix_rt::test]
+    async fn create_film_fails_if_the_film_already_exists() {
+        let store = RwLock::new(HashMap::new());
+        let film = create_test_film("1");
+        store.write().unwrap().insert(film.id, film.clone());
+
+        let repo = MemoryFilmRepository { films: store };
+        let result = repo.create_film(&film).await;
+
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.ends_with("already exists"));
+    }
+
+    #[actix_rt::test]
+    async fn update_film_works() {
+        let store = RwLock::new(HashMap::new());
+        let film = create_test_film("1");
+        store.write().unwrap().insert(film.id, film.clone());
+
+        let mut film_update = film.clone();
+        film_update.title = "new-title".to_string();
+        film_update.year = 2002;
+
+        let repo = MemoryFilmRepository { films: store };
+        let result = repo.update_film(&film_update).await;
+
+        assert!(result.is_ok());
+        let updated_file = result.unwrap();
+        assert_eq!(updated_file.id, film.id);
+        assert_ne!(updated_file.title, film.title);
+        assert_eq!(updated_file.title, film_update.title);
+        assert_eq!(updated_file.director, film.director);
+        assert_eq!(updated_file.poster, film.poster);
+        assert_ne!(updated_file.year, film.year);
+        assert_eq!(updated_file.year, film_update.year);
+        assert_eq!(updated_file.created_at, film.created_at);
+        assert!(updated_file.updated_at.is_some());
+        assert!(film.updated_at.is_none());
+    }
+
+    #[actix_rt::test]
+    async fn update_film_fails_if_file_is_not_present() {
+        let store = RwLock::new(HashMap::new());
+        let film = create_test_film("1");
+        store.write().unwrap().insert(film.id, film.clone());
+
+        let film_update = create_test_film("2");
+
+        let repo = MemoryFilmRepository { films: store };
+        let result = repo.update_film(&film_update).await;
+
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.contains("does not exist"));
+    }
+
+    #[actix_rt::test]
+    async fn delete_film_works() {
+        let store = RwLock::new(HashMap::new());
+        let film = create_test_film("1");
+        store.write().unwrap().insert(film.id, film.clone());
+
+        let repo = MemoryFilmRepository { films: store };
+        let result = repo.delete_film(&film.id).await;
+
+        assert!(result.is_ok());
+        assert_eq!(result.unwrap(), film.id);
+    }
+
+    #[actix_rt::test]
+    async fn delete_film_does_not_fail_if_film_is_not_present() {
+        let repo = MemoryFilmRepository::default();
+        let id = uuid::Uuid::new_v4();
+        let result = repo.delete_film(&id).await;
+
+        assert!(result.is_ok());
+        assert_eq!(result.unwrap(), id);
+    }
+}
