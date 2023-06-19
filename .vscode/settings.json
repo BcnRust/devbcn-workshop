@@ -1,0 +1,5 @@
+{
+  "vsicons.associations.files": [
+    { "icon": "dotenv", "extensions": [".env", ".env.example"] }
+  ]
+}
