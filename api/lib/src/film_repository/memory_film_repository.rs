@@ -31,7 +31,7 @@ impl FilmRepository for MemoryFilmRepository {
         let result = self
             .films
             .read()
-            .map_err(|e| format!("Couldn't find film: {}", e))
+            .map_err(|e| format!("An error happened while trying to read films: {}", e))
             .and_then(|films| {
                 let r = films.clone().into_values().collect::<Vec<_>>();
                 Ok(r)
@@ -48,7 +48,7 @@ impl FilmRepository for MemoryFilmRepository {
         let result = self
             .films
             .read()
-            .map_err(|e| format!("Couldn't find film: {}", e))
+            .map_err(|e| format!("An error happened while trying to read films: {}", e))
             .and_then(|films| {
                 films
                     .get(film_id)
@@ -64,36 +64,50 @@ impl FilmRepository for MemoryFilmRepository {
     }
 
     async fn create_film(&self, film: &Film) -> FilmResult<Film> {
-        if self.get_film(&film.id).await.is_ok() {
-            let err = format!("Film with id {} already exists", film.id);
-            tracing::error!(err);
-            return Err(err);
+        match self.films.write() {
+            Ok(mut films) => {
+                if films.get(&film.id).is_some() {
+                    let err = format!("Film with id {} already exists", film.id);
+                    tracing::error!(err);
+                    Err(err)
+                } else {
+                    let mut new_film = film.to_owned();
+                    new_film.created_at = Some(Utc::now());
+                    films.insert(film.id, new_film.clone());
+                    tracing::trace!("Film with id {} correctly created", film.id);
+                    Ok(new_film)
+                }
+            }
+            Err(e) => {
+                let err = format!("An error happened while trying to update film: {}", e);
+                tracing::error!(err);
+                Err(err)
+            }
         }
-        let mut new_film = film.to_owned();
-        new_film.created_at = Some(Utc::now());
-
-        // TODO: (ROB) remove unwrap
-        let mut films = self.films.write().unwrap();
-        films.insert(film.id, new_film.clone());
-        tracing::trace!("Film with id {} correctly created", film.id);
-        Ok(new_film)
     }
 
     async fn update_film(&self, film: &Film) -> FilmResult<Film> {
-        // TODO: (ROB) remove unwrap
-        let mut films = self.films.write().unwrap();
-        let old_film = films.get_mut(&film.id);
-        match old_film {
-            Some(old_film) => {
-                let mut updated_film = film.to_owned();
-                updated_film.created_at = old_film.created_at;
-                updated_film.updated_at = Some(Utc::now());
-                films.insert(film.id, updated_film.clone());
-                tracing::debug!("Film with id {} correctly updated", film.id);
-                Ok(updated_film)
+        match self.films.write() {
+            Ok(mut films) => {
+                let old_film = films.get_mut(&film.id);
+                match old_film {
+                    Some(old_film) => {
+                        let mut updated_film = film.to_owned();
+                        updated_film.created_at = old_film.created_at;
+                        updated_film.updated_at = Some(Utc::now());
+                        films.insert(film.id, updated_film.clone());
+                        tracing::debug!("Film with id {} correctly updated", film.id);
+                        Ok(updated_film)
+                    }
+                    None => {
+                        let err = format!("Film with id {} does not exist", film.id);
+                        tracing::error!(err);
+                        Err(err)
+                    }
+                }
             }
-            None => {
-                let err = format!("Film with id {} does not exist", film.id);
+            Err(e) => {
+                let err = format!("An error happened while trying to update film: {}", e);
                 tracing::error!(err);
                 Err(err)
             }
@@ -101,9 +115,16 @@ impl FilmRepository for MemoryFilmRepository {
     }
 
     async fn delete_film(&self, film_id: &uuid::Uuid) -> FilmResult<Uuid> {
-        // TODO: (ROB) remove unwrap
-        let mut films = self.films.write().unwrap();
-        films.remove(film_id);
-        Ok(film_id.to_owned())
+        match self.films.write() {
+            Ok(mut films) => {
+                films.remove(film_id);
+                Ok(film_id.to_owned())
+            }
+            Err(e) => {
+                let err = format!("An error happened while trying to delete film: {}", e);
+                tracing::error!(err);
+                Err(err)
+            }
+        }
     }
 }
