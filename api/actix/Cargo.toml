@@ -14,9 +14,9 @@ sqlx = "0.6.3"
 
 # actix
 actix-web = "4.3.1"
+actix-cors = "0.6.4"
 # utils
 dotenv = "0.15"
 # tracing
 tracing = "0.1"
 tracing-subscriber = { version= "0.3", features = ["env-filter", "json", "time"] }
-actix-cors = "0.6.4"
