@@ -27,14 +27,23 @@
       "label": "shuttle:watch",
       "command": "watch",
       "problemMatcher": {
-        "base": "$rustc",
+        "owner": "rust",
+        "fileLocation": ["relative", "${workspaceRoot}"],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
         "background": {
-          "activeOnStart": false,
+          "activeOnStart": true,
           "beginsPattern": {
             "regexp": "^.*Building.*"
           },
           "endsPattern": {
-            "regexp": "^.*Finished running.*"
+            "regexp": "^.*Starting api-shuttle.*"
           }
         }
       },
@@ -42,8 +51,8 @@
       "isBackground": true,
       "options": {
         "env": {
-          "RUST_LOG": "info",
-          "PORT": "8080"
+          "RUST_LOG": "info"
+          // "PORT": "8080"
         }
       },
       "group": {
@@ -58,6 +67,43 @@
       "problemMatcher": ["$rustc", "$rust-panic"],
       "args": ["run"],
       "isBackground": false,
+      "options": {
+        "env": {
+          "RUST_LOG": "info"
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    },
+    {
+      "type": "cargo",
+      "label": "shuttle:run:background",
+      "command": "shuttle",
+      "problemMatcher": {
+        "owner": "rust",
+        "fileLocation": ["relative", "${workspaceRoot}"],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "^.*Building.*"
+          },
+          "endsPattern": {
+            "regexp": "^.*Starting api-shuttle.*"
+          }
+        }
+      },
+      "args": ["run"],
+      "isBackground": true,
       "options": {
         "env": {
           "RUST_LOG": "info"
