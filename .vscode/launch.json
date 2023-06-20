@@ -1,0 +1,30 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug Actix API",
+      "cargo": {
+        "args": ["build", "--bin=api-actix", "--package=api-actix"],
+        "filter": {
+          "name": "api-actix",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+
+    {
+      "type": "lldb",
+      "request": "attach",
+      "name": "Debug Shuttle",
+      "program": "${workspaceFolder}/target/debug/api-shuttle",
+      "preLaunchTask": "shuttle:watch"
+    }
+  ]
+}
