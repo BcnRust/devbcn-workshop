@@ -7,9 +7,9 @@ edition = "2021"
 
 [dependencies]
 # shared
-shared = { version = "0.1.0", path = "../shared" }
+# shared = { path = "../shared" }
 # dioxus
 dioxus = "0.3.2"
 dioxus-web = "0.3.2"
-# serde
+reqwest = { version = "0.11.18", features = ["json"] }
 serde = { version = "1.0.164", features = ["derive"] }
