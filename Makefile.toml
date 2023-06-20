@@ -32,6 +32,22 @@ args = ["serve"]
 # rm -rf dist
 # '''
 
+# local db
+[tasks.db-start]
+workspace = false
+script_runner = "@shell"
+script = '''
+docker run -d --name devbcn-workshop -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=devbcn postgres
+'''
+
+[tasks.db-stop]
+workspace = false
+script_runner = "@shell"
+script = '''
+docker stop postgres
+docker rm postgres
+'''
+
 # general tasks
 [tasks.clippy]
 workspace = false
