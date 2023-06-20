@@ -24,7 +24,14 @@
       "request": "attach",
       "name": "Debug Shuttle",
       "program": "${workspaceFolder}/target/debug/api-shuttle",
-      "preLaunchTask": "shuttle:watch"
+      "preLaunchTask": "shuttle:run:background"
+    },
+
+    {
+      "type": "lldb",
+      "request": "attach",
+      "name": "Attach to Shuttle",
+      "program": "${workspaceFolder}/target/debug/api-shuttle"
     }
   ]
 }
