@@ -1,3 +1,4 @@
+use actix_cors::Cors;
 use actix_web::{web, App, HttpServer};
 
 #[actix_web::main]
@@ -28,7 +29,10 @@ async fn main() -> std::io::Result<()> {
     tracing::info!("🚀🚀🚀 Starting Actix server at {}", address);
 
     HttpServer::new(move || {
-        App::new().service(
+        // CORS
+        let cors = Cors::permissive();
+
+        App::new().wrap(cors).service(
             web::scope("/api")
                 .app_data(repo.clone())
                 .configure(api_lib::health::service)

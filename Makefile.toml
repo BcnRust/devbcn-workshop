@@ -1,7 +1,7 @@
 # project tasks
 [tasks.api-run]
 workspace = false
-env = { RUST_LOG="debug" }
+env = { RUST_LOG="info" }
 install_crate = "cargo-shuttle"
 command = "cargo"
 args = ["shuttle", "run"]

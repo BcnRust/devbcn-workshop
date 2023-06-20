@@ -2,3 +2,5 @@ target/
 dist/
 Secrets.toml
 .env
+.vscode
+node_modules
