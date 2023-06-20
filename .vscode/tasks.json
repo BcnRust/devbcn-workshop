@@ -1,4 +1,5 @@
 {
+  "version": "2.0.0",
   "tasks": [
     {
       "type": "cargo",
@@ -6,9 +7,20 @@
       "problemMatcher": ["$rustc", "$rust-panic"],
       "group": {
         "kind": "build",
-        "isDefault": true
+        "isDefault": false
       },
       "label": "rust: cargo check"
+    },
+    {
+      "type": "cargo",
+      "command": "run",
+      "label": "actix:run",
+      "args": ["--bin", "api-actix"],
+      "problemMatcher": ["$rustc", "$rust-panic"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     },
     {
       "type": "cargo",
@@ -30,7 +42,8 @@
       "isBackground": true,
       "options": {
         "env": {
-          "RUST_LOG": "info"
+          "RUST_LOG": "info",
+          "PORT": "8080"
         }
       },
       "group": {
