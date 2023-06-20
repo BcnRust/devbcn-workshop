@@ -1,0 +1,59 @@
+{
+  "tasks": [
+    {
+      "type": "cargo",
+      "command": "check",
+      "problemMatcher": ["$rustc", "$rust-panic"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "label": "rust: cargo check"
+    },
+    {
+      "type": "cargo",
+      "label": "shuttle:watch",
+      "command": "watch",
+      "problemMatcher": {
+        "base": "$rustc",
+        "background": {
+          "activeOnStart": false,
+          "beginsPattern": {
+            "regexp": "^.*Building.*"
+          },
+          "endsPattern": {
+            "regexp": "^.*Finished running.*"
+          }
+        }
+      },
+      "args": ["-x", "shuttle run"],
+      "isBackground": true,
+      "options": {
+        "env": {
+          "RUST_LOG": "info"
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    },
+    {
+      "type": "cargo",
+      "label": "shuttle:run",
+      "command": "shuttle",
+      "problemMatcher": ["$rustc", "$rust-panic"],
+      "args": ["run"],
+      "isBackground": false,
+      "options": {
+        "env": {
+          "RUST_LOG": "info"
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    }
+  ]
+}
