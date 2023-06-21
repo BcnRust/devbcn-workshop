@@ -10,7 +10,7 @@ pub fn Header(cx: Scope) -> Element {
                 img {
                     class: "w-20 h-20 bg-transparent p-2 animate-jump",
                     alt: "ferris",
-                    src: "ferris.svg"
+                    src: "ferris.png"
                 }
                 span { class: "ml-3 text-xl", "Rusty films"}
             }
