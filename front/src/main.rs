@@ -7,7 +7,7 @@ use dioxus::prelude::*;
 use serde::{Deserialize, Serialize};
 
 // const HOST: &str = "https://devbcn.shuttleapp.rs/api/v1";
-const HOST: &str = "http://localhost:5000/api/v1";
+const HOST: &str = "http://localhost:8000/api/v1";
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 struct Film {
