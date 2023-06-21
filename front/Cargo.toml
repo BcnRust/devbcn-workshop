@@ -7,9 +7,9 @@ edition = "2021"
 
 [dependencies]
 # shared
-# shared = { path = "../shared" }
+shared = { workspace = true }
 # dioxus
 dioxus = "0.3.2"
 dioxus-web = "0.3.2"
 reqwest = { version = "0.11.18", features = ["json"] }
-serde = { version = "1.0.164", features = ["derive"] }
+serde = { workspace = true }

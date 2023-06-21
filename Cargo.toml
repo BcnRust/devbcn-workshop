@@ -6,3 +6,17 @@ members = [
     "front",
     "shared"
 ]
+
+[workspace.dependencies]
+# internal
+shared = { version = "0.1.0", path = "./shared" }
+api-lib = { version = "0.1.0", path = "./api/lib" }
+# actix and sqlx
+actix-web = "4.3.1"
+sqlx = { version = "0.6.3", default-features = false, features = [ "runtime-actix-native-tls", "macros", "postgres", "uuid", "chrono", "json" ] }
+# serde
+serde = { version = "1.0.164", features = ["derive"] }
+# utils
+tracing = "0.1"
+uuid = { version = "1.3.4", features = ["serde", "v4"] }
+chrono = { version = "0.4", features = ["serde"] }

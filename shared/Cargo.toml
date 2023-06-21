@@ -8,11 +8,9 @@ backend = ["sqlx"]
 
 [dependencies]
 # serde
-serde = { version = "1.0.164", features = ["derive"] }
-
+serde = { workspace = true }
 # Sqlx, only when the backend add this as dependency is compiled
-sqlx = { version = "0.6.3", optional = true }
-
+sqlx = { workspace = true, optional = true }
 # utils
-uuid = { version = "1.3.4", features = ["serde", "v4"] }
-chrono = { version = "0.4", features = ["serde"] }
+uuid = { workspace = true }
+chrono = { workspace = true }

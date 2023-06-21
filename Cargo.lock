@@ -296,7 +296,6 @@ dependencies = [
  "actix-web",
  "api-lib",
  "dotenv",
- "shared",
  "sqlx",
  "tracing",
  "tracing-subscriber",
@@ -325,7 +324,6 @@ version = "0.1.0"
 dependencies = [
  "actix-web",
  "api-lib",
- "shared",
  "shuttle-actix-web",
  "shuttle-runtime",
  "shuttle-shared-db",
@@ -1219,6 +1217,7 @@ dependencies = [
  "dioxus-web",
  "reqwest",
  "serde",
+ "shared",
 ]
 
 [[package]]

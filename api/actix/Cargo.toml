@@ -6,17 +6,14 @@ publish = false
 
 [dependencies]
 # internal
-api-lib = { path = "../lib" }
-shared = { path = "../../shared", features = ["backend"] }
-
+api-lib = { workspace = true }
 # db
-sqlx = "0.6.3"
-
+sqlx = { workspace = true }
 # actix
-actix-web = "4.3.1"
+actix-web = { workspace = true }
 actix-cors = "0.6.4"
 # utils
 dotenv = "0.15"
 # tracing
-tracing = "0.1"
+tracing =  { workspace = true }
 tracing-subscriber = { version= "0.3", features = ["env-filter", "json", "time"] }

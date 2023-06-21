@@ -1,5 +1,5 @@
-# @host = https://devbcn.shuttleapp.rs
-@host = http://localhost:8000
+@host = https://devbcn.shuttleapp.rs
+# @host = http://localhost:8000
 
 ### health
 GET {{host}}/api/health HTTP/1.1

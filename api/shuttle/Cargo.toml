@@ -8,18 +8,17 @@ publish = false
 
 [dependencies]
 # internal
-api-lib = { version = "0.1.0", path = "../lib" }
-shared = { version = "0.1.0", path = "../../shared" }
+api-lib = { workspace = true }
 # shuttle
 shuttle-runtime = "0.19.0"
 shuttle-actix-web = "0.19.0"
 # db
 # shuttle-aws-rds = { version = "0.18.0", features = ["postgres"] }
 shuttle-shared-db = { version = "0.19.0", features = ["postgres"] }
-sqlx = "0.6.3"
+sqlx = { workspace = true }
 
 # static files
 shuttle-static-folder = "0.19.0"
 # actix
-actix-web = "4.3.1"
+actix-web = { workspace = true }
 tokio = "1.28.2"
