@@ -1,22 +1,15 @@
 #![allow(non_snake_case)]
 // import the prelude to get access to the `rsx!` macro and the `Scope` and `Element` types
 mod components;
+mod models;
 
-use components::{FilmCard, Header};
+use components::{FilmCard, FilmModal, Header};
 use dioxus::prelude::*;
-use serde::{Deserialize, Serialize};
+use models::FilmModalVisibility;
+use shared::models::Film;
 
 // const HOST: &str = "https://devbcn.shuttleapp.rs/api/v1";
-const HOST: &str = "http://localhost:8000/api/v1";
-
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
-struct Film {
-    pub id: String,
-    pub title: String,
-    pub director: String,
-    pub year: u16,
-    pub poster: String,
-}
+const HOST: &str = "http://localhost:5000/api/v1";
 
 fn films_endpoint() -> String {
     format!("{}/films", HOST)
@@ -38,12 +31,14 @@ fn main() {
 
 // create a component that renders a div with the text "Hello, world!"
 fn App(cx: Scope) -> Element {
+    use_shared_state_provider(cx, || FilmModalVisibility(false));
     let films = use_state::<Option<Vec<Film>>>(cx, || None);
-    let force_get_films = use_state(&cx, || ());
+    // let is_modal_visible = use_shared_state::<bool>(cx);
+    let force_get_films = use_state(cx, || ());
 
     {
         let films = films.clone();
-        use_effect(&cx, force_get_films, |_| async move {
+        use_effect(cx, force_get_films, |_| async move {
             let existing_films = get_films().await;
             if existing_films.is_empty() {
                 films.set(None);
@@ -55,18 +50,20 @@ fn App(cx: Scope) -> Element {
 
     cx.render(rsx! {
         main {
+            class: "relative",
             Header {}
+            FilmModal {}
             section {
-                class: "shadow-xl",
+                class: "md:container md:mx-auto p-8 box-border",
                 if let Some(films) = films.get() {
                     rsx!(
                         ul {
+                            class: "flex flex-row justify-center items-start",
                             {films.iter().map(|film| {
                                 rsx!(
                                     FilmCard {
                                         key: "{film.id}",
-                                        poster: "{film.poster}",
-                                        title: "{film.title}"
+                                        film: film
                                     }
                                 )
                             })}
