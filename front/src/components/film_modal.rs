@@ -43,6 +43,7 @@ pub fn FilmModal<'a>(
                 form {
                     class: "w-full flex-1 flex flex-col justify-stretch items-start gap-y-2",
                     div {
+                        class: "w-full",
                         label {
                             class: "text-sm font-semibold",
                             "Title"
@@ -61,6 +62,7 @@ pub fn FilmModal<'a>(
                         }
                     }
                     div {
+                        class: "w-full",
                         label {
                             class: "text-sm font-semibold",
                             "Director"
@@ -79,6 +81,7 @@ pub fn FilmModal<'a>(
                         }
                     }
                     div {
+                        class: "w-full",
                         label {
                             class: "text-sm font-semibold",
                             "Year"
@@ -97,6 +100,7 @@ pub fn FilmModal<'a>(
                         }
                     }
                     div {
+                        class: "w-full",
                         label {
                             class: "text-sm font-semibold",
                             "Poster"

@@ -8,10 +8,10 @@ pub fn Header(cx: Scope) -> Element {
 
     cx.render(rsx!(
       header {
-        class: "text-gray-400 bg-teal-950 body-font",
+        class: "text-gray-400 bg-transparent body-font",
         div { class: "container mx-auto flex flex-wrap p-5 flex-col md:flex-row justify-between items-center",
             a {
-                class: "flex title-font font-medium items-center text-white mb-4 md:mb-0",
+                class: "flex title-font font-medium items-center text-teal-950 mb-4 md:mb-0",
                 img {
                     class: "bg-transparent p-2 animate-jump",
                     alt: "ferris",

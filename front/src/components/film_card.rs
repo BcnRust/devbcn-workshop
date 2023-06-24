@@ -11,24 +11,29 @@ pub fn FilmCard<'a>(
 ) -> Element {
     cx.render(rsx!(
         li {
-            class: "film-card flex-1 p-4 rounded box-border bg-neutral-100 drop-shadow-md",
+            class: "film-card md:basis-1/4 p-4 rounded box-border bg-neutral-100 drop-shadow-md transition-all ease-in-out hover:drop-shadow-xl flex-col flex justify-start items-stretch animate-fade animate-duration-500 animate-ease-in-out animate-normal animate-fill-both",
             header {
                 img {
+                    class: "max-h-80 w-auto mx-auto rounded",
                     src: "{film.poster}"
                 },
             }
             section {
-                p {
+                class: "flex-1",
+                h3 {
+                    class: "text-lg font-bold my-3",
                     "{film.title}"
                 }
                 p {
                     "{film.director}"
                 }
                 p {
+                    class: "text-sm text-gray-500",
                     "{film.year.to_string()}"
                 }
             }
             footer {
+                class: "flex justify-end space-x-2 mt-auto",
                 Button {
                     button_type: ButtonType::Secondary,
                     onclick: move |event| on_delete.call(event),

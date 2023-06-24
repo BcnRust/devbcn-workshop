@@ -4,7 +4,7 @@ mod components;
 mod models;
 
 use components::{FilmCard, FilmModal, Header};
-use dioxus::{html::s, prelude::*};
+use dioxus::prelude::*;
 use models::FilmModalVisibility;
 use shared::models::Film;
 
@@ -108,7 +108,7 @@ fn App(cx: Scope) -> Element {
 
     cx.render(rsx! {
         main {
-            class: "relative z-0",
+            class: "relative z-0 bg-teal-100 w-screen h-auto min-h-screen",
             Header {}
             // if selected_film.get().is_some() {
             //     let selected = selected_film.get().clone();
@@ -131,11 +131,11 @@ fn App(cx: Scope) -> Element {
                 },
             }
             section {
-                class: "md:container md:mx-auto p-8 box-border",
+                class: "md:container md:mx-auto md:py-8",
                 if let Some(films) = films.get() {
                     rsx!(
                         ul {
-                            class: "flex flex-row justify-center items-start",
+                            class: "flex flex-row justify-center items-stretch gap-4 flex-wrap",
                             {films.iter().map(|film| {
                                 rsx!(
                                     FilmCard {
