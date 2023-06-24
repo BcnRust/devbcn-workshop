@@ -1215,9 +1215,11 @@ version = "0.1.0"
 dependencies = [
  "dioxus",
  "dioxus-web",
+ "log",
  "reqwest",
  "serde",
  "shared",
+ "uuid",
 ]
 
 [[package]]

@@ -3,3 +3,5 @@ dist/
 Secrets.toml
 .env
 node_modules
+api.local.http
+
