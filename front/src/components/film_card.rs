@@ -42,7 +42,7 @@ pub fn FilmCard<'a>(
                         stroke: "currentColor",
                         stroke_width: "1.5",
                         view_box: "0 0 24 24",
-                        class: "w-6 h-6",
+                        class: "w-5 h-5",
                         path {
                             stroke_linecap: "round",
                             stroke_linejoin: "round",
@@ -58,7 +58,7 @@ pub fn FilmCard<'a>(
                         stroke: "currentColor",
                         stroke_width: "1.5",
                         view_box: "0 0 24 24",
-                        class: "w-6 h-6",
+                        class: "w-5 h-5",
                         path {
                             stroke_linecap: "round",
                             stroke_linejoin: "round",

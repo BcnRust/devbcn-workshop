@@ -48,14 +48,14 @@ pub fn FilmModal<'a>(cx: Scope<'a, FilmModalProps>) -> Element<'a> {
     }
     cx.render(rsx!(
         article {
-            class: "z-50 w-screen h-screen absolute top-0 right-0 bg-gray-800 bg-opacity-50 flex flex-col justify-center items-center",
+            class: "z-50 w-full h-full fixed top-0 right-0 bg-gray-800 bg-opacity-50 flex flex-col justify-center items-center",
             section {
-                class: "w-1/3 h-1/2 bg-white rounded-lg flex flex-col justify-center items-center box-border p-6",
+                class: "w-1/3 h-auto bg-white rounded-lg flex flex-col justify-center items-center box-border p-6",
                 header {
                     class: "mb-4",
                     h2 {
-                        class: "text-xl font-semibold",
-                        "🎬 New film"
+                        class: "text-xl text-teal-950 font-semibold",
+                        "🎬 Film"
                     }
                 }
                 form {

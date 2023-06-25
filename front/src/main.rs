@@ -3,7 +3,7 @@
 mod components;
 mod models;
 
-use components::{FilmCard, FilmModal, Header};
+use components::{FilmCard, FilmModal, Footer, Header};
 use dioxus::prelude::*;
 use models::FilmModalVisibility;
 use shared::models::Film;
@@ -108,20 +108,10 @@ fn App(cx: Scope) -> Element {
 
     cx.render(rsx! {
         main {
-            class: "relative z-0 bg-teal-100 w-screen h-auto min-h-screen",
+            class: "relative z-0 bg-blue-100 w-screen h-auto min-h-screen flex flex-col justify-start items-stretch",
             Header {}
-            FilmModal {
-                film: selected_film.get().clone(),
-                on_create_or_update: move |new_film| {
-                    create_or_update_film(new_film);
-                },
-                on_cancel: move |_| {
-                    selected_film.set(None);
-                    is_modal_visible.write().0 = false;
-                }
-            }
             section {
-                class: "md:container md:mx-auto md:py-8",
+                class: "md:container md:mx-auto md:py-8 flex-1",
                 if let Some(films) = films.get() {
                     rsx!(
                         ul {
@@ -144,6 +134,17 @@ fn App(cx: Scope) -> Element {
                         }
                     )
                 }
+            }
+            Footer {}
+        }
+        FilmModal {
+            film: selected_film.get().clone(),
+            on_create_or_update: move |new_film| {
+                create_or_update_film(new_film);
+            },
+            on_cancel: move |_| {
+                selected_film.set(None);
+                is_modal_visible.write().0 = false;
             }
         }
     })
