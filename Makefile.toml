@@ -26,7 +26,12 @@ rm -rf api/shuttle/static
 mkdir api/shuttle/static
 cd front
 dioxus build --release
+# local development 
+# shuttle issue with static files
+# location is different depending on the environment
 cp -r dist/* ../api/shuttle/static
+# production
+cp -r dist/* ../static
 '''
 
 # local db
