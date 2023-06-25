@@ -22,13 +22,14 @@ args = ["serve"]
 workspace = false
 script_runner = "@shell"
 script = '''
-rm -rf api/shuttle/static
+# shuttle issue with static files
+# location is different depending on the environment
+rm -rf api/shuttle/static static
 mkdir api/shuttle/static
+mkdir static
 cd front
 dioxus build --release
 # local development 
-# shuttle issue with static files
-# location is different depending on the environment
 cp -r dist/* ../api/shuttle/static
 # production
 cp -r dist/* ../static
