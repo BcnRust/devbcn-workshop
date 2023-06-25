@@ -111,7 +111,7 @@ pub fn FilmModal<'a>(cx: Scope<'a, FilmModalProps>) -> Element<'a> {
                             value: "{draft_film.get().year.to_string()}",
                             oninput: move |evt| {
                                 draft_film.set(Film {
-                                    year: evt.value.clone().parse::<u16>().unwrap(),
+                                    year: evt.value.clone().parse::<u16>().unwrap_or(1900),
                                     ..draft_film.get().clone()
                                 })
                             }
