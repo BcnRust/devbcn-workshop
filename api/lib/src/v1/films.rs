@@ -2,7 +2,7 @@ use actix_web::{
     web::{self, ServiceConfig},
     HttpResponse,
 };
-use shared::models::Film;
+use shared::models::{CreateFilm, Film};
 use uuid::Uuid;
 
 use crate::film_repository::FilmRepository;
@@ -36,8 +36,11 @@ async fn get<R: FilmRepository>(film_id: web::Path<Uuid>, repo: web::Data<R>) ->
     }
 }
 
-async fn post<R: FilmRepository>(film: web::Json<Film>, repo: web::Data<R>) -> HttpResponse {
-    match repo.create_film(&film).await {
+async fn post<R: FilmRepository>(
+    create_film: web::Json<CreateFilm>,
+    repo: web::Data<R>,
+) -> HttpResponse {
+    match repo.create_film(&create_film).await {
         Ok(film) => HttpResponse::Ok().json(film),
         Err(e) => {
             HttpResponse::InternalServerError().body(format!("Internal server error: {:?}", e))
@@ -127,20 +130,34 @@ mod tests {
     #[actix_rt::test]
     async fn create_works() {
         let film_id = uuid::Uuid::new_v4();
-        let film_title = "Film test title";
-        let new_film = create_test_film(film_id, film_title.to_string());
+        let title = "Film test title";
+        let create_film = CreateFilm {
+            title: title.to_string(),
+            director: "Director test name".to_string(),
+            year: 2001,
+            poster: "Poster test name".to_string(),
+        };
 
         let mut repo = MockFilmRepository::default();
-        repo.expect_create_film()
-            .returning(|film| Ok(film.to_owned()));
+        repo.expect_create_film().returning(move |create_film| {
+            Ok(Film {
+                id: film_id,
+                title: create_film.title.to_owned(),
+                director: create_film.director.to_owned(),
+                year: create_film.year,
+                poster: create_film.poster.to_owned(),
+                created_at: Some(Utc::now()),
+                updated_at: None,
+            })
+        });
 
-        let result = post(web::Json(new_film), web::Data::new(repo)).await;
+        let result = post(web::Json(create_film), web::Data::new(repo)).await;
 
         let body = to_bytes(result.into_body()).await.unwrap();
         let film = serde_json::from_slice::<'_, Film>(&body).unwrap();
 
         assert_eq!(film.id, film_id);
-        assert_eq!(film.title, film_title);
+        assert_eq!(film.title, title);
     }
 
     #[actix_rt::test]

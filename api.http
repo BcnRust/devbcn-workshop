@@ -1,5 +1,6 @@
-@host = https://devbcn.shuttleapp.rs
-# @host = http://localhost:8000
+# @host = https://devbcn.shuttleapp.rs
+@host = http://localhost:8080
+@film_id = 6f05e5f2-133c-11ee-be9f-0ab7e0d8c876
 
 ### health
 GET {{host}}/api/health HTTP/1.1
@@ -9,7 +10,6 @@ POST {{host}}/api/v1/films HTTP/1.1
 Content-Type: application/json
 
 {
-    "id": "356e42a8-e659-406f-98bb-6124414675e8",
     "title": "Death in Venice",
     "director": "Luchino Visconti",
     "year": 1971,
@@ -21,7 +21,7 @@ PUT {{host}}/api/v1/films HTTP/1.1
 Content-Type: application/json
 
 {
-    "id": "356e42a8-e659-406f-98bb-6124414675e8",
+    "id": "{{film_id}}",
     "title": "Death in Venice",
     "director": "Benjamin Britten",
     "year": 1981,
@@ -32,11 +32,11 @@ Content-Type: application/json
 GET {{host}}/api/v1/films HTTP/1.1
 
 ### get film
-GET {{host}}/api/v1/films/356e42a8-e659-406f-98bb-6124414675e8 HTTP/1.1
+GET {{host}}/api/v1/films/{{film_id}} HTTP/1.1
 
 ### get bad film
 GET {{host}}/api/v1/films/356e42a8-e659-406f-98 HTTP/1.1
 
 
 ### delete film
-DELETE {{host}}/api/v1/films/356e42a8-e659-406f-98bb-6124414675e8 HTTP/1.1
+DELETE {{host}}/api/v1/films/{{film_id}} HTTP/1.1
