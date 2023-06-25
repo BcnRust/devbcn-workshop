@@ -5,7 +5,7 @@ use chrono::Utc;
 use shared::models::{CreateFilm, Film};
 use uuid::Uuid;
 
-use super::{film_repository::FilmResult, FilmRepository};
+use super::{FilmRepository, FilmResult};
 
 pub struct MemoryFilmRepository {
     films: RwLock<HashMap<Uuid, Film>>,
@@ -31,11 +31,8 @@ impl FilmRepository for MemoryFilmRepository {
         let result = self
             .films
             .read()
-            .map_err(|e| format!("An error happened while trying to read films: {}", e))
-            .and_then(|films| {
-                let r = films.clone().into_values().collect::<Vec<_>>();
-                Ok(r)
-            });
+            .map(|films| films.clone().into_values().collect::<Vec<_>>())
+            .map_err(|e| format!("An error happened while trying to read films: {}", e));
 
         if result.is_err() {
             tracing::error!("Couldn't retrive a films");

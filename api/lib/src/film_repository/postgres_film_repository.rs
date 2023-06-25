@@ -2,7 +2,7 @@ use async_trait::async_trait;
 use shared::models::{CreateFilm, Film};
 use uuid::Uuid;
 
-use super::film_repository::{FilmRepository, FilmResult};
+use super::{FilmRepository, FilmResult};
 
 pub struct PostgresFilmRepository {
     pool: sqlx::PgPool,
@@ -79,7 +79,7 @@ impl FilmRepository for PostgresFilmRepository {
     }
 
     async fn delete_film(&self, film_id: &uuid::Uuid) -> FilmResult<Uuid> {
-        let result = sqlx::query_scalar::<_, Uuid>(
+        sqlx::query_scalar::<_, Uuid>(
             r#"
       DELETE FROM films
       WHERE id = $1
@@ -89,7 +89,6 @@ impl FilmRepository for PostgresFilmRepository {
         .bind(film_id)
         .fetch_one(&self.pool)
         .await
-        .map_err(|e| e.to_string());
-        result
+        .map_err(|e| e.to_string())
     }
 }
