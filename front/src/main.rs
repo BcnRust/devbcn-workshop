@@ -71,22 +71,30 @@ fn App(cx: Scope) -> Element {
         });
     };
 
-    let create_film = move |film: Film| {
+    let create_or_update_film = move |film: Film| {
         let force_get_films = force_get_films.clone();
-        // let selected_film = selected_film.clone();
+        let current_selected_film = selected_film.clone();
         let is_modal_visible = is_modal_visible.clone();
 
         cx.spawn({
             async move {
-                let response = reqwest::Client::new()
-                    .post(&films_endpoint())
-                    .json(&film)
-                    .send()
-                    .await;
+                let response = if current_selected_film.get().is_some() {
+                    reqwest::Client::new()
+                        .put(&films_endpoint())
+                        .json(&film)
+                        .send()
+                        .await
+                } else {
+                    reqwest::Client::new()
+                        .post(&films_endpoint())
+                        .json(&film)
+                        .send()
+                        .await
+                };
                 match response {
                     Ok(_data) => {
                         log::info!("Film created");
-                        // selected_film.set(None);
+                        current_selected_film.set(None);
                         is_modal_visible.write().0 = false;
                         force_get_films.set(());
                     }
@@ -104,9 +112,13 @@ fn App(cx: Scope) -> Element {
             Header {}
             FilmModal {
                 film: selected_film.get().clone(),
-                on_create: move |new_film| {
-                    create_film(new_film);
+                on_create_or_update: move |new_film| {
+                    create_or_update_film(new_film);
                 },
+                on_cancel: move |_| {
+                    selected_film.set(None);
+                    is_modal_visible.write().0 = false;
+                }
             }
             section {
                 class: "md:container md:mx-auto md:py-8",

@@ -8,8 +8,8 @@ pub fn Header(cx: Scope) -> Element {
 
     cx.render(rsx!(
       header {
-        class: "text-gray-400 bg-transparent body-font",
-        div { class: "container mx-auto flex flex-wrap p-5 flex-col md:flex-row justify-between items-center",
+        class: "sticky top-0 z-10 text-gray-400 bg-teal-200 body-font shadow-md",
+        div { class: "container mx-auto flex flex-wrap p-0 flex-col md:flex-row justify-between items-center",
             a {
                 class: "flex title-font font-medium items-center text-teal-950 mb-4 md:mb-0",
                 img {
@@ -18,7 +18,7 @@ pub fn Header(cx: Scope) -> Element {
                     src: "ferris.png",
                     "loading": "lazy"
                 }
-                span { class: "ml-3 text-xl", "Rusty films"}
+                span { class: "ml-3 text-2xl", "Rusty films"}
             }
             Button {
                 button_type: ButtonType::Primary,

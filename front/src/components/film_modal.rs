@@ -7,7 +7,8 @@ use crate::models::{ButtonType, FilmModalVisibility};
 
 #[derive(Props)]
 pub struct FilmModalProps<'a> {
-    on_create: EventHandler<'a, Film>,
+    on_create_or_update: EventHandler<'a, Film>,
+    on_cancel: EventHandler<'a, MouseEvent>,
     #[props(!optional)]
     film: Option<Film>,
 }
@@ -140,8 +141,7 @@ pub fn FilmModal<'a>(cx: Scope<'a, FilmModalProps>) -> Element<'a> {
                     class: "flex flex-row justify-center items-center mt-4 gap-x-2",
                     Button {
                         button_type: ButtonType::Secondary,
-                        onclick: move |_| {
-                            is_modal_visible.write().0 = false;
+                        onclick: move |evt| {
                             draft_film.set(Film {
                                 title: "".to_string(),
                                 poster: "".to_string(),
@@ -150,14 +150,15 @@ pub fn FilmModal<'a>(cx: Scope<'a, FilmModalProps>) -> Element<'a> {
                                 id: Uuid::new_v4(),
                                 created_at: None,
                                 updated_at: None,
-                            })
+                            });
+                            cx.props.on_cancel.call(evt)
                         },
                         "Cancel"
                     }
                     Button {
                         button_type: ButtonType::Primary,
                         onclick: move |_| {
-                            cx.props.on_create.call(draft_film.get().clone());
+                            cx.props.on_create_or_update.call(draft_film.get().clone());
                             draft_film.set(Film {
                                 title: "".to_string(),
                                 poster: "".to_string(),
