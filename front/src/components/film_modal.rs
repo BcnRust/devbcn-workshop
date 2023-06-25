@@ -5,25 +5,42 @@ use uuid::Uuid;
 use crate::components::Button;
 use crate::models::{ButtonType, FilmModalVisibility};
 
-#[inline_props]
-pub fn FilmModal<'a>(
-    cx: Scope<'a>,
+#[derive(Props)]
+pub struct FilmModalProps<'a> {
     on_create: EventHandler<'a, Film>,
+    #[props(!optional)]
     film: Option<Film>,
-) -> Element {
+}
+
+pub fn FilmModal<'a>(cx: Scope<'a, FilmModalProps>) -> Element<'a> {
     let is_modal_visible = use_shared_state::<FilmModalVisibility>(cx).unwrap();
-    let draft_film = use_state::<Film>(cx, || match film.clone() {
-        Some(film) => film.clone(),
-        None => Film {
-            title: "".to_string(),
-            poster: "".to_string(),
-            director: "".to_string(),
-            year: 1900,
-            id: Uuid::new_v4(),
-            created_at: None,
-            updated_at: None,
-        },
+    let draft_film = use_state::<Film>(cx, || Film {
+        title: "".to_string(),
+        poster: "".to_string(),
+        director: "".to_string(),
+        year: 1900,
+        id: Uuid::new_v4(),
+        created_at: None,
+        updated_at: None,
     });
+
+    {
+        let draft_film = draft_film.clone();
+        use_effect(cx, &cx.props.film, |film| async move {
+            match film {
+                Some(film) => draft_film.set(film),
+                None => draft_film.set(Film {
+                    title: "".to_string(),
+                    poster: "".to_string(),
+                    director: "".to_string(),
+                    year: 1900,
+                    id: Uuid::new_v4(),
+                    created_at: None,
+                    updated_at: None,
+                }),
+            }
+        });
+    }
 
     if !is_modal_visible.read().0 {
         return None;
@@ -125,13 +142,6 @@ pub fn FilmModal<'a>(
                         button_type: ButtonType::Secondary,
                         onclick: move |_| {
                             is_modal_visible.write().0 = false;
-                        },
-                        "Cancel"
-                    }
-                    Button {
-                        button_type: ButtonType::Primary,
-                        onclick: move |_| {
-                            on_create.call(draft_film.get().clone());
                             draft_film.set(Film {
                                 title: "".to_string(),
                                 poster: "".to_string(),
@@ -142,7 +152,23 @@ pub fn FilmModal<'a>(
                                 updated_at: None,
                             })
                         },
-                        "Create film"
+                        "Cancel"
+                    }
+                    Button {
+                        button_type: ButtonType::Primary,
+                        onclick: move |_| {
+                            cx.props.on_create.call(draft_film.get().clone());
+                            draft_film.set(Film {
+                                title: "".to_string(),
+                                poster: "".to_string(),
+                                director: "".to_string(),
+                                year: 1900,
+                                id: Uuid::new_v4(),
+                                created_at: None,
+                                updated_at: None,
+                            })
+                        },
+                        "Save film"
                     }
                 }
             }

@@ -25,6 +25,7 @@ async fn get_films() -> Vec<Film> {
 }
 
 fn main() {
+    wasm_logger::init(wasm_logger::Config::default().module_prefix("front"));
     // launch the web app
     dioxus_web::launch(App);
 }
@@ -36,15 +37,6 @@ fn App(cx: Scope) -> Element {
     let films = use_state::<Option<Vec<Film>>>(cx, || None);
     let selected_film = use_state::<Option<Film>>(cx, || None);
     let force_get_films = use_state(cx, || ());
-    let test_film = Film {
-        title: "Test".to_string(),
-        poster: "https://picsum.photos/200/300".to_string(),
-        director: "Test".to_string(),
-        year: 2021,
-        id: uuid::Uuid::new_v4(),
-        created_at: None,
-        updated_at: None,
-    };
 
     {
         let films = films.clone();
@@ -110,22 +102,8 @@ fn App(cx: Scope) -> Element {
         main {
             class: "relative z-0 bg-teal-100 w-screen h-auto min-h-screen",
             Header {}
-            // if selected_film.get().is_some() {
-            //     let selected = selected_film.get().clone();
-            //     cx.render(rsx! {
-            //         FilmModal {
-            //                 film: &selected.unwrap_or(None)
-            //         }
-            //     })
-            // } else {
-            //     cx.render(rsx! {
-            //         FilmModal {}
-            //     })
-            // }
-            // FilmModal {
-            //     film: test_film
-            // }
             FilmModal {
+                film: selected_film.get().clone(),
                 on_create: move |new_film| {
                     create_film(new_film);
                 },
