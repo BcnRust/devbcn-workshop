@@ -1215,9 +1215,12 @@ version = "0.1.0"
 dependencies = [
  "dioxus",
  "dioxus-web",
+ "log",
  "reqwest",
  "serde",
  "shared",
+ "uuid",
+ "wasm-logger",
 ]
 
 [[package]]
@@ -3901,6 +3904,17 @@ name = "wasm-bindgen-shared"
 version = "0.2.87"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ca6ad05a4870b2bf5fe995117d3728437bd27d7cd5f06f13c17443ef369775a1"
+
+[[package]]
+name = "wasm-logger"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "074649a66bb306c8f2068c9016395fa65d8e08d2affcbf95acf3c24c3ab19718"
+dependencies = [
+ "log",
+ "wasm-bindgen",
+ "web-sys",
+]
 
 [[package]]
 name = "web-sys"

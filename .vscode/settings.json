@@ -1,5 +1,8 @@
 {
   "vsicons.associations.files": [
     { "icon": "dotenv", "extensions": [".env", ".env.example"] }
+  ],
+  "rust-analyzer.linkedProjects": [
+    "./front/Cargo.toml"
   ]
 }

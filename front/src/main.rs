@@ -1,22 +1,15 @@
 #![allow(non_snake_case)]
 // import the prelude to get access to the `rsx!` macro and the `Scope` and `Element` types
 mod components;
+mod models;
 
-use components::{FilmCard, Header};
+use components::{FilmCard, FilmModal, Footer, Header};
 use dioxus::prelude::*;
-use serde::{Deserialize, Serialize};
+use models::FilmModalVisibility;
+use shared::models::Film;
 
 // const HOST: &str = "https://devbcn.shuttleapp.rs/api/v1";
-const HOST: &str = "http://localhost:8000/api/v1";
-
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
-struct Film {
-    pub id: String,
-    pub title: String,
-    pub director: String,
-    pub year: u16,
-    pub poster: String,
-}
+const HOST: &str = "http://localhost:5000/api/v1";
 
 fn films_endpoint() -> String {
     format!("{}/films", HOST)
@@ -32,18 +25,22 @@ async fn get_films() -> Vec<Film> {
 }
 
 fn main() {
+    wasm_logger::init(wasm_logger::Config::default().module_prefix("front"));
     // launch the web app
     dioxus_web::launch(App);
 }
 
 // create a component that renders a div with the text "Hello, world!"
 fn App(cx: Scope) -> Element {
+    use_shared_state_provider(cx, || FilmModalVisibility(false));
+    let is_modal_visible = use_shared_state::<FilmModalVisibility>(cx).unwrap();
     let films = use_state::<Option<Vec<Film>>>(cx, || None);
-    let force_get_films = use_state(&cx, || ());
+    let selected_film = use_state::<Option<Film>>(cx, || None);
+    let force_get_films = use_state(cx, || ());
 
     {
         let films = films.clone();
-        use_effect(&cx, force_get_films, |_| async move {
+        use_effect(cx, force_get_films, |_| async move {
             let existing_films = get_films().await;
             if existing_films.is_empty() {
                 films.set(None);
@@ -53,20 +50,84 @@ fn App(cx: Scope) -> Element {
         });
     }
 
+    let delete_film = move |filmId| {
+        let force_get_films = force_get_films.clone();
+        cx.spawn({
+            async move {
+                let response = reqwest::Client::new()
+                    .delete(&format!("{}/{}", &films_endpoint(), filmId))
+                    .send()
+                    .await;
+                match response {
+                    Ok(_data) => {
+                        log::info!("Film deleted");
+                        force_get_films.set(());
+                    }
+                    Err(err) => {
+                        log::info!("Error deleting film: {:?}", err);
+                    }
+                }
+            }
+        });
+    };
+
+    let create_or_update_film = move |film: Film| {
+        let force_get_films = force_get_films.clone();
+        let current_selected_film = selected_film.clone();
+        let is_modal_visible = is_modal_visible.clone();
+
+        cx.spawn({
+            async move {
+                let response = if current_selected_film.get().is_some() {
+                    reqwest::Client::new()
+                        .put(&films_endpoint())
+                        .json(&film)
+                        .send()
+                        .await
+                } else {
+                    reqwest::Client::new()
+                        .post(&films_endpoint())
+                        .json(&film)
+                        .send()
+                        .await
+                };
+                match response {
+                    Ok(_data) => {
+                        log::info!("Film created");
+                        current_selected_film.set(None);
+                        is_modal_visible.write().0 = false;
+                        force_get_films.set(());
+                    }
+                    Err(err) => {
+                        log::info!("Error creating film: {:?}", err);
+                    }
+                }
+            }
+        });
+    };
+
     cx.render(rsx! {
         main {
+            class: "relative z-0 bg-blue-100 w-screen h-auto min-h-screen flex flex-col justify-start items-stretch",
             Header {}
             section {
-                class: "shadow-xl",
+                class: "md:container md:mx-auto md:py-8 flex-1",
                 if let Some(films) = films.get() {
                     rsx!(
                         ul {
+                            class: "flex flex-row justify-center items-stretch gap-4 flex-wrap",
                             {films.iter().map(|film| {
                                 rsx!(
                                     FilmCard {
                                         key: "{film.id}",
-                                        poster: "{film.poster}",
-                                        title: "{film.title}"
+                                        film: film,
+                                        on_edit: move |_| {
+                                            selected_film.set(Some(film.clone()));
+                                            is_modal_visible.write().0 = true
+                                        },
+                                        on_delete: move |_| {
+                                            delete_film(film.id)
+                                        }
                                     }
                                 )
                             })}
@@ -74,22 +135,17 @@ fn App(cx: Scope) -> Element {
                     )
                 }
             }
+            Footer {}
         }
-
+        FilmModal {
+            film: selected_film.get().clone(),
+            on_create_or_update: move |new_film| {
+                create_or_update_film(new_film);
+            },
+            on_cancel: move |_| {
+                selected_film.set(None);
+                is_modal_visible.write().0 = false;
+            }
+        }
     })
 }
-
-// pub fn RightArrowIcon(cx: Scope) -> Element {
-//     cx.render(rsx!(
-//         svg {
-//             fill: "none",
-//             stroke: "currentColor",
-//             stroke_linecap: "round",
-//             stroke_linejoin: "round",
-//             stroke_width: "2",
-//             class: "w-4 h-4 ml-1",
-//             view_box: "0 0 24 24",
-//             path { d: "M5 12h14M12 5l7 7-7 7"}
-//         }
-//     ))
-// }
