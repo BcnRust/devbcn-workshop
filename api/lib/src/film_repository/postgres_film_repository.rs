@@ -1,5 +1,5 @@
 use async_trait::async_trait;
-use shared::models::Film;
+use shared::models::{CreateFilm, Film};
 use uuid::Uuid;
 
 use super::film_repository::{FilmRepository, FilmResult};
@@ -42,19 +42,18 @@ impl FilmRepository for PostgresFilmRepository {
         .map_err(|e| e.to_string())
     }
 
-    async fn create_film(&self, film: &Film) -> FilmResult<Film> {
+    async fn create_film(&self, create_film: &CreateFilm) -> FilmResult<Film> {
         sqlx::query_as::<_, Film>(
             r#"
-      INSERT INTO films (id, title, director, year, poster)
-      VALUES ($1, $2, $3, $4, $5)
+      INSERT INTO films (title, director, year, poster)
+      VALUES ($1, $2, $3, $4)
       RETURNING id, title, director, year, poster, created_at, updated_at
       "#,
         )
-        .bind(film.id)
-        .bind(&film.title)
-        .bind(&film.director)
-        .bind(film.year as i16)
-        .bind(&film.poster)
+        .bind(&create_film.title)
+        .bind(&create_film.director)
+        .bind(create_film.year as i16)
+        .bind(&create_film.poster)
         .fetch_one(&self.pool)
         .await
         .map_err(|e| e.to_string())

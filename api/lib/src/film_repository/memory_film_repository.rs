@@ -2,7 +2,7 @@ use std::{collections::HashMap, sync::RwLock};
 
 use async_trait::async_trait;
 use chrono::Utc;
-use shared::models::Film;
+use shared::models::{CreateFilm, Film};
 use uuid::Uuid;
 
 use super::{film_repository::FilmResult, FilmRepository};
@@ -63,20 +63,21 @@ impl FilmRepository for MemoryFilmRepository {
         result
     }
 
-    async fn create_film(&self, film: &Film) -> FilmResult<Film> {
+    async fn create_film(&self, create_film: &CreateFilm) -> FilmResult<Film> {
         match self.films.write() {
             Ok(mut films) => {
-                if films.get(&film.id).is_some() {
-                    let err = format!("Film with id {} already exists", film.id);
-                    tracing::error!(err);
-                    Err(err)
-                } else {
-                    let mut new_film = film.to_owned();
-                    new_film.created_at = Some(Utc::now());
-                    films.insert(film.id, new_film.clone());
-                    tracing::trace!("Film with id {} correctly created", film.id);
-                    Ok(new_film)
-                }
+                let new_film = Film {
+                    id: uuid::Uuid::new_v4(),
+                    title: create_film.title.clone(),
+                    director: create_film.director.clone(),
+                    year: create_film.year,
+                    poster: create_film.poster.clone(),
+                    created_at: Some(Utc::now()),
+                    updated_at: None,
+                };
+                films.insert(new_film.id, new_film.clone());
+                tracing::trace!("Film with id {} correctly created", new_film.id);
+                Ok(new_film)
             }
             Err(e) => {
                 let err = format!("An error happened while trying to update film: {}", e);
@@ -133,7 +134,7 @@ impl FilmRepository for MemoryFilmRepository {
 mod tests {
     use super::MemoryFilmRepository;
     use crate::film_repository::FilmRepository;
-    use shared::models::Film;
+    use shared::models::{CreateFilm, Film};
     use std::{collections::HashMap, sync::RwLock};
 
     fn create_test_film(id: &'static str) -> Film {
@@ -145,6 +146,15 @@ mod tests {
             year: 2001,
             created_at: Some(chrono::Utc::now()),
             updated_at: None,
+        }
+    }
+
+    fn create_test_create_film(id: &'static str) -> CreateFilm {
+        CreateFilm {
+            title: format!("title-{}", id),
+            director: format!("director-{}", id),
+            poster: format!("poster-{}", id),
+            year: 2001,
         }
     }
 
@@ -217,34 +227,18 @@ mod tests {
     #[actix_rt::test]
     async fn create_film_works() {
         let store = RwLock::new(HashMap::new());
-        let mut film = create_test_film("1");
-        film.created_at = None;
+        let create_film = create_test_create_film("1");
 
         let repo = MemoryFilmRepository { films: store };
-        let result = repo.create_film(&film).await;
+        let result = repo.create_film(&create_film).await;
 
         assert!(result.is_ok());
         let created_file = result.unwrap();
-        assert_eq!(created_file.id, film.id);
-        assert_eq!(created_file.title, film.title);
-        assert_eq!(created_file.director, film.director);
-        assert_eq!(created_file.poster, film.poster);
-        assert_eq!(created_file.year, film.year);
+        assert_eq!(created_file.title, create_film.title);
+        assert_eq!(created_file.director, create_film.director);
+        assert_eq!(created_file.poster, create_film.poster);
+        assert_eq!(created_file.year, create_film.year);
         assert!(created_file.created_at.is_some());
-    }
-
-    #[actix_rt::test]
-    async fn create_film_fails_if_the_film_already_exists() {
-        let store = RwLock::new(HashMap::new());
-        let film = create_test_film("1");
-        store.write().unwrap().insert(film.id, film.clone());
-
-        let repo = MemoryFilmRepository { films: store };
-        let result = repo.create_film(&film).await;
-
-        assert!(result.is_err());
-        let err = result.unwrap_err();
-        assert!(err.ends_with("already exists"));
     }
 
     #[actix_rt::test]
