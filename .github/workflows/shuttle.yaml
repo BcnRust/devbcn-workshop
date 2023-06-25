@@ -9,6 +9,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
+          override: true
+
+      - name: Getting cargo make
+        uses: davidB/rust-cargo-make@v1
+
+      - name: Install Dioxus CLI
+        run: cargo install dioxus-cli
+
+      - name: Build the front-end
+        run: cargo make front-build
+
       - name: deployment
         uses: shuttle-hq/deploy-action@main
         with:

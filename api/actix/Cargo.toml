@@ -11,6 +11,7 @@ api-lib = { workspace = true }
 sqlx = { workspace = true }
 # actix
 actix-web = { workspace = true }
+actix-files = { workspace = true }
 actix-cors = "0.6.4"
 # utils
 dotenv = "0.15"

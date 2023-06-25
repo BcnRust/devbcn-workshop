@@ -18,19 +18,16 @@ install_crate = "dioxus-cli"
 command = "dioxus"
 args = ["serve"]
 
-# [tasks.front]
-# workspace = false
-# script_runner = "@shell"
-# script = '''
-# rm -rf static
-# mkdir static
-# cd front
-# dioxus build --release
-# mkdir -p dist/assets/images
-# cp -a src/images/* dist/assets/images/
-# cp -r dist/* ../static
-# rm -rf dist
-# '''
+[tasks.front-build]
+workspace = false
+script_runner = "@shell"
+script = '''
+rm -rf api/shuttle/static
+mkdir api/shuttle/static
+cd front
+dioxus build --release
+cp -r dist/* ../api/shuttle/static
+'''
 
 # local db
 [tasks.db-start]

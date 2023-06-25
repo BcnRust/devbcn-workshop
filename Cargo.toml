@@ -13,6 +13,7 @@ shared = { version = "0.1.0", path = "./shared" }
 api-lib = { version = "0.1.0", path = "./api/lib" }
 # actix and sqlx
 actix-web = "4.3.1"
+actix-files = "0.6.2"
 sqlx = { version = "0.6.3", default-features = false, features = [ "runtime-actix-native-tls", "macros", "postgres", "uuid", "chrono", "json" ] }
 # serde
 serde = { version = "1.0.164", features = ["derive"] }

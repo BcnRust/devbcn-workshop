@@ -28,18 +28,28 @@ async fn main() -> std::io::Result<()> {
     // starting the server
     tracing::info!("🚀🚀🚀 Starting Actix server at {}", address);
 
+    // static files
+    let static_folder = std::env::var("STATIC_FOLDER").unwrap_or("./front/dist".to_string());
+
     HttpServer::new(move || {
         // CORS
         let cors = Cors::permissive();
 
-        App::new().wrap(cors).service(
-            web::scope("/api")
-                .app_data(repo.clone())
-                .configure(api_lib::health::service)
-                .configure(
-                    api_lib::v1::service::<api_lib::film_repository::PostgresFilmRepository>,
-                ),
-        )
+        App::new()
+            .wrap(cors)
+            .service(
+                web::scope("/api")
+                    .app_data(repo.clone())
+                    .configure(api_lib::health::service)
+                    .configure(
+                        api_lib::v1::service::<api_lib::film_repository::PostgresFilmRepository>,
+                    ),
+            )
+            .service(
+                actix_files::Files::new("/", &static_folder)
+                    .show_files_listing()
+                    .index_file("index.html"),
+            )
     })
     .bind(&address)
     .unwrap_or_else(|err| {
