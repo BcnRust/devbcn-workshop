@@ -56,6 +56,8 @@ Hopefully, **you should see a greeting** in your screen!
 
 And that's how easy it is to create a simple API with [Shuttle](https://www.shuttle.rs)!
 
+> Try to add more routes and see what happens!
+
 ```admonish
 We're using [Actix-web](https://actix.rs) as our web framework, but **you can use any other framework** supported by [Shuttle](https://www.shuttle.rs).
 
