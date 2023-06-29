@@ -11,3 +11,4 @@
   - [Starting the Application](./frontend/04_02_app_startup.md)
   - [Components](./frontend/04_03_components.md)
     - [Layout Components](./frontend/04_03_01_layout.md)
+    - [Reusable Components](./frontend/04_03_02_reusable_components.md)
