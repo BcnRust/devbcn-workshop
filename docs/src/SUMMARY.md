@@ -9,6 +9,7 @@
 # Backend
 - [Backend](./02_backend.md)
   - [Workspace Setup](./02_01_workspace_setup.md)
+  - [Exploring Shuttle](./02_02_shuttle.md)
 
 # Frontend
 - [Frontend](./04_frontend.md)
