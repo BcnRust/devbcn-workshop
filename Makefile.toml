@@ -66,14 +66,6 @@ command = "cargo"
 args = ["fmt", "--all", "--", "--check"]
 
 # book tasks
-[tasks.book-readme]
-workspace = false
-script_runner = "@shell"
-script = '''
-cp README.md docs/src/README.md
-sed -i 's/\.\/docs\/src\//\.\//g' docs/src/README.md
-'''
-
 [tasks.book-preprocessors]
 workspace = false
 script_runner = "@shell"
@@ -85,15 +77,15 @@ cargo install mdbook-toc
 
 [tasks.book-build-ci]
 workspace = false
-run_task = { name = [ "book-readme", "book-build-inner"] }
+run_task = { name = ["book-build-inner"] }
 
 [tasks.book-build]
 workspace = false
-run_task = { name = ["book-preprocessors", "book-readme", "book-build-inner"] }
+run_task = { name = ["book-preprocessors", "book-build-inner"] }
 
 [tasks.book-serve]
 workspace = false
-run_task = { name = ["book-preprocessors", "book-readme", "book-serve-inner"] }
+run_task = { name = ["book-preprocessors", "book-serve-inner"] }
 
 [tasks.book-build-inner]
 workspace = false
