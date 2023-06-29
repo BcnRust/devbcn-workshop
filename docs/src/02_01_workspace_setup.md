@@ -12,8 +12,8 @@ Remember that our project will have this structure:
 
 ```txt
 ├── api            # Rust API code
-|    ├── lib       # Actix-Web API code
-|    └── shuttle   # Shuttle project
+│   ├── lib        # Actix-Web API code
+│   └── shuttle    # Shuttle project
 ├── front          # Dioxus front-end code
 ├── shared         # Common code shared between the API and the front-end
 └── README.md      # Workshop instructions and guidance
