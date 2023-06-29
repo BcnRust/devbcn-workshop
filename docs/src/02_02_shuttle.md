@@ -24,7 +24,7 @@ async fn actix_web(
 }
 ```
 
-Shuttle has generated a simple `hello-world` [Actix-web](https://actix.rs) application for us. 
+[Shuttle](https://www.shuttle.rs) has generated a simple `hello-world` [Actix-web](https://actix.rs) application for us. 
 
 As you can see, it's pretty straight-forward.
 
