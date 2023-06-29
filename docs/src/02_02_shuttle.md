@@ -28,7 +28,7 @@ async fn actix_web(
 
 As you can see, it's pretty straight-forward.
 
-The `actix_web` function is the entry point of our application. It returns a `ShuttleActixWeb` instance that will be used by Shuttle to run our application.
+The `actix_web` function is the entry point of our application. It returns a `ShuttleActixWeb` instance that will be used by [Shuttle](https://www.shuttle.rs) to run our application.
 
 In this function, we're going to configure our different routes. In this case, we only have one route: `/`, which is mapped to the `hello_world` function.
 
@@ -57,11 +57,11 @@ Hopefully, **you should see a greeting** in your screen!
 And that's how easy it is to create a simple API with [Shuttle](https://www.shuttle.rs)!
 
 ```admonish
-We're using [Actix-web](https://actix.rs) as our web framework, but you can any other framework supported by Shuttle.
+We're using [Actix-web](https://actix.rs) as our web framework, but **you can use any other framework** supported by [Shuttle](https://www.shuttle.rs).
 
-Check out the [Shuttle documentation](https://docs.shuttle.rs/introduction/welcome) to learn more. Browse through the `Examples` section to see how to use Shuttle with other frameworks.
+Check out the [Shuttle documentation](https://docs.shuttle.rs/introduction/welcome) to learn more. Browse through the `Examples` section to see how to use [Shuttle](https://www.shuttle.rs) with other frameworks.
 
-[Shuttle](https://www.shuttle.rs/) supports the following frameworks:
+At the moment of writing this, [Shuttle](https://www.shuttle.rs/) supports:
 - [Actix-web](https://actix.rs)
 - [Axum](https://github.com/tokio-rs/axum)
 - [Salvo](https://next.salvo.rs/)
