@@ -10,6 +10,8 @@
 - [Backend](./02_backend.md)
   - [Workspace Setup](./02_01_workspace_setup.md)
   - [Exploring Shuttle](./02_02_shuttle.md)
+  - [Deploying with Shuttle](./02_03_deploying_with_shuttle.md)
+  - [Shuttle CLI and Console](./02_04_shuttle_cli_console.md)
 
 # Frontend
 - [Frontend](./04_frontend.md)
