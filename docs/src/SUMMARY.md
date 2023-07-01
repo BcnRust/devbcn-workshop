@@ -12,3 +12,4 @@
   - [Components](./frontend/04_03_components.md)
     - [Layout Components](./frontend/04_03_01_layout.md)
     - [Reusable Components](./frontend/04_03_02_reusable_components.md)
+  - [State management](./frontend/04_04_state_management.md)
