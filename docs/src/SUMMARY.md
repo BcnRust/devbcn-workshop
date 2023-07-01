@@ -14,6 +14,7 @@
   - [Shuttle CLI and Console](./02_04_shuttle_cli_console.md)
   - [Working with a Database](./02_05_working_with_a_database.md)
   - [Setting up the Database](./02_06_setting_up_the_database.md)
+  - [Connecting to the Database](./02_07_connecting_the_database.md)
 
 # Frontend
 - [Frontend](./04_frontend.md)
