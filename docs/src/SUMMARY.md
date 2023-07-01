@@ -21,7 +21,12 @@
   - [Watch Mode](./02_11_watch_mode.md)
 
 # Frontend
-- [Frontend](./04_frontend.md)
-  - [Setup](./04_01_setup.md)
-  - [Starting the Application](./04_02_app_startup.md)
-  - [Components](./04_03_components.md)
+- [Frontend](./frontend/04_frontend.md)
+  - [Setup](./frontend/04_01_setup.md)
+  - [Starting the Application](./frontend/04_02_app_startup.md)
+  - [Components](./frontend/04_03_components.md)
+    - [Layout Components](./frontend/04_03_01_layout.md)
+    - [Reusable Components](./frontend/04_03_02_reusable_components.md)
+  - [State management](./frontend/04_04_state_management.md)
+    - [Global state](./frontend/04_04_01_global_state.md)
+    - [Local state](./frontend/04_04_02_local_state.md)

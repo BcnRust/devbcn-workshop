@@ -41,9 +41,9 @@ public
 ├── image3.png
 └── ... (rest of your images)
 ```
-<img src="./assets/bcnrust.png" width="80" height="auto" />
-<img src="./assets/devbcn.png" width="140" height="auto" />
-<img src="./assets/ferris.png" width="80" height="auto" />
+<img src="../assets/bcnrust.png" width="80" height="auto" />
+<img src="../assets/devbcn.png" width="140" height="auto" />
+<img src="../assets/ferris.png" width="80" height="auto" />
 
 
 Now that we've confirmed the directory structure, let's proceed to initialize your application...
