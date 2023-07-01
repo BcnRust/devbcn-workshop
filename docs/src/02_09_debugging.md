@@ -1,6 +1,6 @@
 # Debugging
 
-We are going to cover in the section how to debug the backend using [Visual Studio Code](https://code.visualstudio.com/).
+In the section we are going to cover how to debug the backend using [Visual Studio Code](https://code.visualstudio.com/).
 
 Make sure that you have installed these two extensions:
 

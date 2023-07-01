@@ -17,6 +17,8 @@
   - [Connecting to the Database](./02_07_connecting_the_database.md)
   - [Deploying the Database](./02_08_deploying_the_database.md)
   - [Debugging](./02_09_debugging.md)
+  - [Instrumentation](./02_10_instrumentation.md)
+  - [Watch Mode](./02_11_watch_mode.md)
 
 # Frontend
 - [Frontend](./04_frontend.md)
