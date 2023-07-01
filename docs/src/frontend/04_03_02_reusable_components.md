@@ -1,14 +1,60 @@
-# Creating Reusable Components
+# Crafting Reusable Components
 
-In this section, we'll be stepping up our game a bit and creating the rest of the components for our app. The lineup includes:
+Let's turn up the heat in this section and start creating some more complex components for our app. Our assembly line will produce:
 
-- A Button that we can use all over the place
-- A Film Card for showcasing films
+- A quick run-through on component props
+- A Button that can be used anywhere in our app
+- A Film Card to display details about a film
 - A Film Modal for creating or updating films
+
+## Props
+
+Before we start building, let's break down how we're going to define props in our components. We'll be doing this using two methods: `struct` and `inline` Props. The main difference between them lies in their location. `struct` Props are defined outside in a struct with prop macros and we attach the generic to our `Scope` type. On the other hand, `inline` Props are tucked right into the component function params. If you're craving more details about this, you can have a peek at the [Dioxus Props documentation](https://dioxuslabs.com/docs/0.3/guide/en/describing_ui/component_props.html)
+
+### Struct Props
+
+These kinds of props are defined separately from the component function, and the generic type needs to be hooked onto the `Scope` type. We use the `#[derive(Props)]` macro to define the props:
+
+> **Note:** You can mark a prop as optional using `#[props(!optional)]`
+```rust
+#[derive(Props)]
+pub struct FilmModalProps<'a> {
+    on_create_or_update: EventHandler<'a, Film>,
+    on_cancel: EventHandler<'a, MouseEvent>,
+    #[props(!optional)]
+    film: Option<Film>,
+}
+
+pub fn FilmModal<'a>(cx: Scope<'a, FilmModalProps>) -> Element<'a> {
+    ...
+}
+```
+
+### Inline Props
+
+Inline props are defined within the component function params. A nice plus is that you can access the `prop` variable directly inside the component, while struct props need a bit of navigation like `cx.props.my_prop`.
+
+For these props, we tag the component function with the `#[inline_props]` macro.
+
+```rust
+#[inline_props]
+pub fn FilmCard<'a>(
+    cx: Scope<'a>,
+    film: &'a Film,
+    on_edit: EventHandler<'a, MouseEvent>,
+    on_delete: EventHandler<'a, MouseEvent>,
+) -> Element {
+    ...
+}
+```
+
+Alright, now that we've got props figured out, let's start building some components!
+
+> **Note:** When you want to use props inside your components, here's how to do it: "{cx.props.my_prop}", "{my_prop}", or "{prop.to_string()}". Make sure to keep the curly braces and the prop name as shown.
 
 ## Button
 
-First up, we're tackling the button. Since we'll be using this in various spots, it's a smart move to make it a reusable component.
+First up, we're creating a button. Since we'll be using this in various spots, it's a smart move to make it a reusable component.
 
 ```rust
 use dioxus::prelude::*;
@@ -78,3 +124,88 @@ pub struct FilmModalVisibility(pub bool);
 ```
 
 But wait, what's that `impl` thing in `button.rs`? This is where Rust's implementation blocks come in. We're using `impl` to add methods to our `ButtonType` enum. Specifically, we're implementing the `Display` trait, which gives us a standard way to display our enum as a string. The `fmt` method determines how each variant of the enum should be formatted as a string. So, when we use `button_type.to_string()` in our Button component, it will return the right Tailwind classes based on the button type. Handy, right?
+
+## Film Card
+
+Moving along, our next creation is the Film Card component. Its role is to present the specifics of a film in our list. Moreover, it will integrate a pair of Button components allowing us to edit and delete the film.
+
+`film_card.rs`
+```rust
+use crate::{components::Button, models::ButtonType};
+use dioxus::prelude::*;
+use shared::models::Film;
+
+#[inline_props]
+pub fn FilmCard<'a>(
+    cx: Scope<'a>,
+    film: &'a Film,
+    on_edit: EventHandler<'a, MouseEvent>,
+    on_delete: EventHandler<'a, MouseEvent>,
+) -> Element {
+    cx.render(rsx!(
+        li {
+            class: "film-card md:basis-1/4 p-4 rounded box-border bg-neutral-100 drop-shadow-md transition-all ease-in-out hover:drop-shadow-xl flex-col flex justify-start items-stretch animate-fade animate-duration-500 animate-ease-in-out animate-normal animate-fill-both",
+            header {
+                img {
+                    class: "max-h-80 w-auto mx-auto rounded",
+                    src: "{film.poster}"
+                },
+            }
+            section {
+                class: "flex-1",
+                h3 {
+                    class: "text-lg font-bold my-3",
+                    "{film.title}"
+                }
+                p {
+                    "{film.director}"
+                }
+                p {
+                    class: "text-sm text-gray-500",
+                    "{film.year.to_string()}"
+                }
+            }
+            footer {
+                class: "flex justify-end space-x-2 mt-auto",
+                Button {
+                    button_type: ButtonType::Secondary,
+                    onclick: move |event| on_delete.call(event),
+                    svg {
+                        fill: "none",
+                        stroke: "currentColor",
+                        stroke_width: "1.5",
+                        view_box: "0 0 24 24",
+                        class: "w-5 h-5",
+                        path {
+                            stroke_linecap: "round",
+                            stroke_linejoin: "round",
+                            d: "M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        }
+                    }
+                }
+                Button {
+                    button_type: ButtonType::Primary,
+                    onclick: move |event| on_edit.call(event),
+                    svg {
+                        fill: "none",
+                        stroke: "currentColor",
+                        stroke_width: "1.5",
+                        view_box: "0 0 24 24",
+                        class: "w-5 h-5",
+                        path {
+                            stroke_linecap: "round",
+                            stroke_linejoin: "round",
+                            d: "M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                        }
+                    }
+                }
+            }
+        }
+    ))
+}
+```
+
+This Film Card component is indeed more intricate than the Button component, due to its wider use of Tailwind classes and the incorporation of event handlers. Let's dissect this a bit:
+
+- `on_edit` and `on_delete` are event handlers that we introduce into the component. They are responsible for managing the click events on the edit and delete buttons respectively.
+- `film` is a reference to the film whose details we are exhibiting in the card.
