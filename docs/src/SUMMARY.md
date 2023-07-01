@@ -16,6 +16,7 @@
   - [Setting up the Database](./02_06_setting_up_the_database.md)
   - [Connecting to the Database](./02_07_connecting_the_database.md)
   - [Deploying the Database](./02_08_deploying_the_database.md)
+  - [Debugging](./02_09_debugging.md)
 
 # Frontend
 - [Frontend](./04_frontend.md)
