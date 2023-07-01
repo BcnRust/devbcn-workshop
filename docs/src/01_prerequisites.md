@@ -49,6 +49,19 @@ rustup target add wasm32-unknown-unknown
 
 We will also need to have [Docker](https://www.docker.com/) installed in order to **deploy locally** while we're developing the backend.
 
+## DBeaver
+
+We will use [DBeaver](https://dbeaver.io/) to **connect to the database** and run queries. Feel free to use any other tool that you prefer.
+
+
+## cargo-watch
+
+We will also use [cargo-watch](https://github.com/watchexec/cargo-watch) to **automatically recompile** our backend when we make changes to the code.
+
+```sh
+cargo install cargo-watch
+```
+
 ## cargo-make
 
 Finally, let's install [cargo-make](https://github.com/sagiegurari/cargo-make):

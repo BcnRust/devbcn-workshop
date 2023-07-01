@@ -1,4 +1,3 @@
-# API
 
 - Create shuttle api
 - Add Shuttle.toml
@@ -14,4 +13,3 @@
   - Uuid
   - Chrono
 - Create api AWS RDS & SQLx
-
