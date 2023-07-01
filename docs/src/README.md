@@ -24,14 +24,13 @@ Check the [Prerequisites](./01_prerequisites.md) section of the workshop guide f
 1. Knowing the audience and installing everything
   - Introduction to the workshop
   - Installing Rust, Cargo, and other dependencies
-  - Setting up the project structure
 
-2. Building the API with Actix-Web and SQLx (25 minutes)
-  - Introduction to Actix-Web and its features
-  - Setting up an Actix-Web project
+2. Building the API with Actix-Web, SQLx and Shuttle
+  - Introduction to Shuttle, Actix-Web and its features
+  - Setting up and deploying an Actix-Web project
+  - Establishing database connectivity with SQLx
   - Creating API endpoints for movie listing
   - Implementing CRUD operations for movies
-  - Establishing database connectivity with SQLx
 
 3. Designing the Front-End with Dioxus
   - Introduction to Dioxus and its features

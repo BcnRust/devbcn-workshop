@@ -93,9 +93,11 @@ This time the project will build and run successfully.
 
 ![Local ConnectionString](./assets/24/local_connectionstring.png)
 
-Note that you will be able to find the connection string to the database in the logs. We will use that connection string later on in the project.
+Note that you will be able to find the **connection string to the database in the logs**. We will use that connection string later on in the project.
 
-> Try to connect to the database using a tool like [DBeaver](https://dbeaver.io/) or [pgAdmin](https://www.pgadmin.org/).
+```admonish example "Connect to the database"
+Try to connect to the database using a tool like [DBeaver](https://dbeaver.io/) or [pgAdmin](https://www.pgadmin.org/).
+```
 
 
 Commit your changes.
