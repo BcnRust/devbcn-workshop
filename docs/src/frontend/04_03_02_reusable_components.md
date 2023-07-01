@@ -209,3 +209,115 @@ This Film Card component is indeed more intricate than the Button component, due
 
 - `on_edit` and `on_delete` are event handlers that we introduce into the component. They are responsible for managing the click events on the edit and delete buttons respectively.
 - `film` is a reference to the film whose details we are exhibiting in the card.
+
+## Film Modal
+
+As the grand finale of our components building phase, we're constructing the Film Modal component. This vital piece will facilitate the creation or update of a film. Its appearance will be commanded by a button located in the app's header or the `edit` button inside the Film Card.
+
+`film_modal.rs`
+```rust
+use dioxus::prelude::*;
+use shared::models::Film;
+use uuid::Uuid;
+
+use crate::components::Button;
+use crate::models::{ButtonType, FilmModalVisibility};
+
+#[derive(Props)]
+pub struct FilmModalProps<'a> {
+    on_create_or_update: EventHandler<'a, MouseEvent>,
+    on_cancel: EventHandler<'a, MouseEvent>,
+}
+
+pub fn FilmModal<'a>(cx: Scope<'a, FilmModalProps>) -> Element<'a> {
+    cx.render(rsx!(
+        article {
+            class: "z-50 w-full h-full fixed top-0 right-0 bg-gray-800 bg-opacity-50 flex flex-col justify-center items-center",
+            section {
+                class: "w-1/3 h-auto bg-white rounded-lg flex flex-col justify-center items-center box-border p-6",
+                header {
+                    class: "mb-4",
+                    h2 {
+                        class: "text-xl text-teal-950 font-semibold",
+                        "🎬 Film"
+                    }
+                }
+                form {
+                    class: "w-full flex-1 flex flex-col justify-stretch items-start gap-y-2",
+                    div {
+                        class: "w-full",
+                        label {
+                            class: "text-sm font-semibold",
+                            "Title"
+                        }
+                        input {
+                            class: "w-full border border-gray-300 rounded-lg p-2",
+                            "type": "text",
+                            placeholder: "Enter film title",
+                        }
+                    }
+                    div {
+                        class: "w-full",
+                        label {
+                            class: "text-sm font-semibold",
+                            "Director"
+                        }
+                        input {
+                            class: "w-full border border-gray-300 rounded-lg p-2",
+                            "type": "text",
+                            placeholder: "Enter film director",
+                        }
+                    }
+                    div {
+                        class: "w-full",
+                        label {
+                            class: "text-sm font-semibold",
+                            "Year"
+                        }
+                        input {
+                            class: "w-full border border-gray-300 rounded-lg p-2",
+                            "type": "number",
+                            placeholder: "Enter film year",
+                        }
+                    }
+                    div {
+                        class: "w-full",
+                        label {
+                            class: "text-sm font-semibold",
+                            "Poster"
+                        }
+                        input {
+                            class: "w-full border border-gray-300 rounded-lg p-2",
+                            "type": "text",
+                            placeholder: "Enter film poster URL",
+                        }
+                    }
+                }
+                footer {
+                    class: "flex flex-row justify-center items-center mt-4 gap-x-2",
+                    Button {
+                        button_type: ButtonType::Secondary,
+                        onclick: move |evt| {
+                            cx.props.on_cancel.call(evt)
+                        },
+                        "Cancel"
+                    }
+                    Button {
+                        button_type: ButtonType::Primary,
+                        onclick: move |evt| {
+                            cx.props.on_create_or_update.call(evt);
+                        },
+                        "Save film"
+                    }
+                }
+            }
+
+        }
+    ))
+}
+```
+
+At the moment, we're primarily focusing on establishing the basic structural framework of the modal. We'll instill the logic in the upcoming section. The current modal props comprise on_create_or_update and on_cancel. These event handlers are key to managing the click events associated with modal actions.
+
+- `on_create_or_update`: This handler is in charge of creating or updating a film.
+- `on_cancel`: This one takes responsibility for shutting down the modal and aborting any ongoing film modification or creation.
