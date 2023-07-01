@@ -217,11 +217,9 @@ As the grand finale of our components building phase, we're constructing the Fil
 `film_modal.rs`
 ```rust
 use dioxus::prelude::*;
-use shared::models::Film;
-use uuid::Uuid;
 
 use crate::components::Button;
-use crate::models::{ButtonType, FilmModalVisibility};
+use crate::models::{ButtonType};
 
 #[derive(Props)]
 pub struct FilmModalProps<'a> {
