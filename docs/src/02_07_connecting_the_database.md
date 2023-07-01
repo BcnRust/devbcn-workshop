@@ -10,7 +10,7 @@ This will help us to get acquainted with [SQLx](https://github.com/launchbadge/s
 
 Don't worry about how to retrieve the information from the database, we will do that in a moment. Just focus on creating and endpoint that will return a string. The string can be anything you want and the route should be `/version`.
 
-If you're not sure how to do it, uncollapse the section below to see the solution.
+If you're not sure about how to do it, uncollapse the section below to see the solution.
 
 ~~~admonish tip title="Solution" collapsible=true
 Open the `main.rs` file in the `api > shuttle > src` folder and add the following code:
