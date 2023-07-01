@@ -321,3 +321,28 @@ At the moment, we're primarily focusing on establishing the basic structural fra
 
 - `on_create_or_update`: This handler is in charge of creating or updating a film.
 - `on_cancel`: This one takes responsibility for shutting down the modal and aborting any ongoing film modification or creation.
+
+Let's update our `main.rs` file to include the Film Modal component. Film Card component will be added later.
+
+`main.rs`
+```diff
+...
+
+-use components::{Footer, Header};
++use components::{FilmModal, Footer, Header};
+
+...
+
+fn App(cx: Scope) -> Element {
+    ...
+    cx.render(rsx! {
+        main {
+            ...
++           FilmModal {
++               on_create_or_update: move |_| {},
++               on_cancel: move |_| {}
++           }
+        }
+    })
+}
+```

@@ -13,3 +13,5 @@
     - [Layout Components](./frontend/04_03_01_layout.md)
     - [Reusable Components](./frontend/04_03_02_reusable_components.md)
   - [State management](./frontend/04_04_state_management.md)
+    - [Global state](./frontend/04_04_01_global_state.md)
+    - [Local state](./frontend/04_04_02_local_state.md)
