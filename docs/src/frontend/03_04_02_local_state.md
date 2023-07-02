@@ -20,6 +20,13 @@ In the `main.rs` file, the `App` component needs to be updated to introduce some
 `main.rs`
 ```diff
 ...
+-use components::{FilmModal, Footer, Header};
++use components::{FilmCard, FilmModal, Footer, Header};
+use dioxus::prelude::*;
+use models::FilmModalVisibility;
++use shared::models::Film;
+
+...
 
 fn App(cx: Scope) -> Element {
     use_shared_state_provider(cx, || FilmModalVisibility(false));
@@ -97,7 +104,8 @@ use crate::models::{ButtonType, FilmModalVisibility};
 
 #[derive(Props)]
 pub struct FilmModalProps<'a> {
-    on_create_or_update: EventHandler<'a, MouseEvent>,
+-   on_create_or_update: EventHandler<'a, MouseEvent>,
++   on_create_or_update: EventHandler<'a, Film>,
     on_cancel: EventHandler<'a, MouseEvent>,
 +   #[props(!optional)]
 +   film: Option<Film>,
