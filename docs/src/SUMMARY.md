@@ -31,6 +31,7 @@
   - [Injecting the repository](./backend/21_injecting_repository.md)
   - [Implementing the endpoints](./backend/22_implementing_endpoints.md)
   - [Static dispatch](./backend/23_static_dispatching.md)
+  - [Serving static files](./backend/24_serving_static_files.md)
 
 
 # Frontend
