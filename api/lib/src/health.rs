@@ -29,8 +29,7 @@ mod tests {
         let data = res
             .headers()
             .get("health-check")
-            .map(|h| h.to_str().ok())
-            .flatten();
+            .and_then(|h| h.to_str().ok());
         assert_eq!(data, Some(API_VERSION));
     }
 }

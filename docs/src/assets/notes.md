@@ -1,7 +1,4 @@
 
-- Tests --> link to repo
-- Hacer health-check endpoint 
-- Config https://actix.rs/docs/application#configure
 - Repositorio para films
 - Crear film entity en shared y consumirlo en api: FromRow
 - Crear trait async
