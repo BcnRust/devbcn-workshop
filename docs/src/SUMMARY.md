@@ -25,6 +25,7 @@
   - [Unit and Integration tests](./backend/15_testing.md)
   - [Films endpoints](./backend/16_films_endpoints.md)
   - [Models](./backend/17_models.md)
+  - [Serde](./backend/18_serde.md)
 
 # Frontend
 - [Frontend](./frontend/03_frontend.md)
