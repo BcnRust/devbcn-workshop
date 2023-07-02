@@ -14,7 +14,7 @@ While the deployment takes place, you can take a look at this [blog post](https:
 
 Once the deployment is complete, you can **check the database connection string** in the terminal.
 
-![Database connection string](../assets/28/cloud_database.png)
+![Database connection string](../assets/backend/08/cloud_database.png)
 
 Don't worry if you missed it. You can always **check the database connection string** in the terminal by running the following command.
 
@@ -24,7 +24,7 @@ cargo shuttle resource list
 
 You can also go to the [Shuttle Console](https://console.shuttle.rs/) and check the database connection string there.
 
-![Console Resources](../assets/28/console_resources.png)
+![Console Resources](../assets/backend/08/console_resources.png)
 
 ## Testing the new endpoint
 

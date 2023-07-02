@@ -142,7 +142,7 @@ DELETE {{host}}/v1/films/{{film_id}} HTTP/1.1
 
 Open it and just click on the `Send Request` link next to each request to send it to the server.
 
-![Send Request](../assets/13/send_request.png)
+![Send Request](../assets/backend/16/send_request.png)
 
 Commit your changes:
   

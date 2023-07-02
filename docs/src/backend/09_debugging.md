@@ -30,7 +30,7 @@ The most important point to take into account here is that the `program` attribu
 
 So, in order to test that this is working, let's put a breakpoint in our `version` endpoint:
 
-![Breakpoint](../assets/29/breakpoint.png)
+![Breakpoint](../assets/backend/09/breakpoint.png)
 
 
 Now, run the project with `cargo shuttle run` and then press `F5` to start debugging.
@@ -41,7 +41,7 @@ Now, run the project with `cargo shuttle run` and then press `F5` to start debug
 curl -i https://localhost:8000/version
 ```
 
-![Breakpoint hit](../assets/29/breakpoint_hit.png)
+![Breakpoint hit](../assets/backend/09/breakpoint_hit.png)
 
 Commit your changes:
 

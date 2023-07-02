@@ -16,7 +16,7 @@ name = "name_you_want"
 
 Your directory structure should look like this:
 
-![Shuttle.toml](../assets/23/shuttle_toml.png)
+![Shuttle.toml](../assets/backend/03/shuttle_toml.png)
 
 **Commit** the changes to your repository.
 
@@ -35,7 +35,7 @@ cargo shuttle deploy
 
 You **should get an error message** similar to this one:
 
-![Error Message](../assets/23/login_error.png)
+![Error Message](../assets/backend/03/login_error.png)
 
 
 ### Login to Shuttle
@@ -48,19 +48,19 @@ Take into account that you will need to have a [GitHub](https://github.com) acco
 
 The moment you run the `cargo shuttle login` command, you will be redirected to a [Shuttle](https://shuttle.rs) page like this so you can **authorize [Shuttle](https://shuttle.rs)** to access your [GitHub](https://github.com) account.
 
-![Login with GitHub](../assets/23/login_with_github.png)
+![Login with GitHub](../assets/backend/03/login_with_github.png)
 
 In your terminal, you should see something like this:
 
-![Login terminal](../assets/23/login_terminal.png)
+![Login terminal](../assets/backend/03/login_terminal.png)
 
 Continue the login process in your browser and **copy the code** you get in the **section 03** of the [Shuttle](https://shuttle.rs) page.
 
-![Login successful](../assets/23/login_shuttle.png)
+![Login successful](../assets/backend/03/login_shuttle.png)
 
 Then **paste the code** in your terminal and press enter.
 
-![Login successful terminal](../assets/23/login_shuttle_terminal.png)
+![Login successful terminal](../assets/backend/03/login_shuttle_terminal.png)
 
 
 ### Let's deploy!
@@ -73,7 +73,7 @@ cargo shuttle deploy
 
 Oh no! We got another **error** message:
 
-![Project not found error](../assets/23/project_not_found_error.png)
+![Project not found error](../assets/backend/03/project_not_found_error.png)
 
 The problem is that we haven't created the project environment yet. Let's do that now.
 
@@ -83,7 +83,7 @@ cargo shuttle project start
 
 If everthing went well, you should see something like this:
 
-![project started](../assets/23/project_started.png)
+![project started](../assets/backend/03/project_started.png)
 
 ```admonish tip
 Once you've done this, if you want to deploy again, you won't need to do this step again.
@@ -97,7 +97,7 @@ cargo shuttle deploy
 
 You should see in your terminal how everything is being deployed and compiled in the [Shuttle](https://shuttle.rs) cloud. This can take a while, so be patient and wait for a message like the one below:
 
-![deployed](../assets/23/deployed.png)
+![deployed](../assets/backend/03/deployed.png)
 
 Browse to the URI shown in the message or curl it to see the result:
 

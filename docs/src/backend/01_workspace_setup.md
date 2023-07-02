@@ -77,7 +77,7 @@ The `vsc` flag is used in this case to tell `cargo` to not initialize a new git 
 Don't worry if you receive the error message below, it is expected. We will fix it later.
 ```
 
-![Workspace Error](.../assets/21/workspace_error.png)
+![Workspace Error](../assets/backend/01/workspace_error.png)
 
 ### Creating the `shuttle` crate
 
@@ -109,7 +109,7 @@ cargo build
 
 You should see something like this:
 
-![Cargo Build](../assets/21/cargo_build.png)
+![Cargo Build](../assets/backend/01/cargo_build.png)
 
 ```admonish warning
 Don't commit yet as we still have some work to do!
@@ -130,7 +130,7 @@ Aside from that, **remove** all the `.gitignore` files from the crates as they a
 
 This is how it should look like:
 
-![.gitignore](../assets/21/gitignore.png)
+![.gitignore](../assets/backend/01/gitignore.png)
 
 ## Committing the changes
 

@@ -77,7 +77,7 @@ cargo shuttle run
 
 You will see that the project is building and then it will fail with the following error:
 
-![Docker Error](../assets/24/docker_error.png)
+![Docker Error](../assets/backend/05/docker_error.png)
 
 ### Docker
 
@@ -91,7 +91,7 @@ cargo shuttle run
 
 This time the project will build and run successfully.
 
-![Local ConnectionString](../assets/24/local_connectionstring.png)
+![Local ConnectionString](../assets/backend/05/local_connectionstring.png)
 
 Note that you will be able to find the **connection string to the database in the logs**. We will use that connection string later on in the project.
 

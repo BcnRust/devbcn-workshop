@@ -61,7 +61,7 @@ cargo shuttle run
 
 If you check your database, you should see that the `films` table has been created:
 
-![Table created](../assets/26/table_created.png)
+![Table created](../assets/backend/06/table_created.png)
 
 Commit your changes.
 
