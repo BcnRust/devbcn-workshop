@@ -28,6 +28,7 @@
   - [Serde](./backend/18_serde.md)
   - [Film Repository](./backend/19_film_repository.md)
   - [Implementing Film Repository](./backend/20_implementing_trait.md)
+  - [Injecting the repository](./backend/21_injecting_repository.md)
 
 # Frontend
 - [Frontend](./frontend/03_frontend.md)

@@ -1,7 +1,3 @@
 
-- Repositorio para films
-- Crear film entity en shared y consumirlo en api: FromRow
-- Crear trait async
-- Implemenent trait con SQLx
-- Memory repo? --> link to repo
-- Add Serde with derive feature to all the crates
+- implement handlers
+- serve static files
