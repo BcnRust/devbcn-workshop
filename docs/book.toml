@@ -10,7 +10,7 @@ create-missing = true
 
 [output.html]
 default-theme = "light"
-preferred-dark-theme = "coal"
+preferred-dark-theme = "ayu"
 # copy-fonts = true
 # additional-css = ["custom.css", "custom2.css"]
 # additional-js = ["custom.js"]

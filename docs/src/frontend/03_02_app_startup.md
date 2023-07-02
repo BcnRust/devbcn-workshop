@@ -87,3 +87,34 @@ dioxus serve
 ```
 
 Now, your development environment is up and running. Changes you make to your source code will automatically be reflected in the served application, thanks to the watching capabilities of both the Tailwind compiler and the Dioxus server. You're now ready to start building your Dioxus application!
+
+## Logging
+
+For applications that run in the browser, having a logging mechanism can be very useful for debugging and understanding the application's behavior.
+
+The first step towards this involves installing the `wasm-logger` crate. You can do this by running the following command:
+
+```bash
+cargo add wasm-logger
+```
+
+Once `wasm-logger` is installed, you need to initialize it in your `main.rs` file. Here's how you can do it:
+
+`main.rs`
+```diff
+...
+fn main() {
++   wasm_logger::init(wasm_logger::Config::default().module_prefix("front"));
+    // launch the web app
+    dioxus_web::launch(App);
+}
+...
+```
+
+With the logger initialized, you can now log messages to your browser's console. The following is an example of how you can log an informational message:
+
+```rust
+log::info!("Message on my console");
+```
+
+By using this logging mechanism, you can make your debugging process more straightforward and efficient.
