@@ -48,19 +48,19 @@ Take into account that you will need to have a [GitHub](https://github.com) acco
 
 The moment you run the `cargo shuttle login` command, you will be redirected to a [Shuttle](https://shuttle.rs) page like this so you can **authorize [Shuttle](https://shuttle.rs)** to access your [GitHub](https://github.com) account.
 
-![Login with GitHub](assets/23/login_with_github.png)
+![Login with GitHub](../assets/23/login_with_github.png)
 
 In your terminal, you should see something like this:
 
-![Login terminal](assets/23/login_terminal.png)
+![Login terminal](../assets/23/login_terminal.png)
 
 Continue the login process in your browser and **copy the code** you get in the **section 03** of the [Shuttle](https://shuttle.rs) page.
 
-![Login successful](assets/23/login_shuttle.png)
+![Login successful](../assets/23/login_shuttle.png)
 
 Then **paste the code** in your terminal and press enter.
 
-![Login successful terminal](assets/23/login_shuttle_terminal.png)
+![Login successful terminal](../assets/23/login_shuttle_terminal.png)
 
 
 ### Let's deploy!
@@ -73,7 +73,7 @@ cargo shuttle deploy
 
 Oh no! We got another **error** message:
 
-![Project not found error](assets/23/project_not_found_error.png)
+![Project not found error](../assets/23/project_not_found_error.png)
 
 The problem is that we haven't created the project environment yet. Let's do that now.
 
@@ -83,7 +83,7 @@ cargo shuttle project start
 
 If everthing went well, you should see something like this:
 
-![project started](assets/23/project_started.png)
+![project started](../assets/23/project_started.png)
 
 ```admonish tip
 Once you've done this, if you want to deploy again, you won't need to do this step again.
