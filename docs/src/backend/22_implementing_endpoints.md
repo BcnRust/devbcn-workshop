@@ -61,7 +61,7 @@ If you test that endpoint, you will see that it works as expected.
 
 If you look into your terminal, you should be able to see the SQL query that was executed:
 
-![sql log](../assets/022/sql_log.png)
+![sql log](../assets/backend/22/sql_log.png)
 
 This is fairly easy, it works, and it's a common option.
 
