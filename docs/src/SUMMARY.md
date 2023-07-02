@@ -23,7 +23,8 @@
   - [Creating a health check endpoint](./backend/13_health_check.md)
   - [Using the configure method](./backend/14_configure_method.md)
   - [Unit and Integration tests](./backend/15_testing.md)
-  - [Films endpoints](./backend/16_films_endpoint.md)
+  - [Films endpoints](./backend/16_films_endpoints.md)
+  - [Models](./backend/17_models.md)
 
 # Frontend
 - [Frontend](./frontend/03_frontend.md)
