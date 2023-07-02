@@ -31,7 +31,7 @@ Take a look at the [actix_web::Scope](https://docs.rs/actix-web/4.3.1/actix_web/
 ~~~
 
 
-~~~admonish tip title="Solution" collapsible=false
+~~~admonish tip title="Solution" collapsible=true
 ```rust
 use actix_web::{
     web::{self, ServiceConfig},

@@ -30,6 +30,8 @@
   - [Implementing Film Repository](./backend/20_implementing_trait.md)
   - [Injecting the repository](./backend/21_injecting_repository.md)
   - [Implementing the endpoints](./backend/22_implementing_endpoints.md)
+  - [Static dispatch](./backend/23_static_dispatching.md)
+
 
 # Frontend
 - [Frontend](./frontend/03_frontend.md)
