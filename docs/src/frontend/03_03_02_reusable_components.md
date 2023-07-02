@@ -15,7 +15,10 @@ Before we start building, let's break down how we're going to define props in ou
 
 These kinds of props are defined separately from the component function, and the generic type needs to be hooked onto the `Scope` type. We use the `#[derive(Props)]` macro to define the props:
 
-> **Note:** You can mark a prop as optional using `#[props(!optional)]`
+```admonish tip title="Optional Props"
+You can mark a prop as optional using `#[props(!optional)]`
+```
+
 ```rust
 #[derive(Props)]
 pub struct FilmModalProps<'a> {
@@ -50,7 +53,9 @@ pub fn FilmCard<'a>(
 
 Alright, now that we've got props figured out, let's start building some components!
 
-> **Note:** When you want to use props inside your components, here's how to do it: "{cx.props.my_prop}", "{my_prop}", or "{prop.to_string()}". Make sure to keep the curly braces and the prop name as shown.
+```admonish info title="Props in RSX"
+When you want to use props inside your components, here's how to do it: `"{cx.props.my_prop}"`, `"{my_prop}"`, or `"{prop.to_string()}"`. Make sure to keep the curly braces and the prop name as shown.
+```
 
 ## Button
 
