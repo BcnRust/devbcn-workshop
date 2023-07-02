@@ -15,7 +15,9 @@ In the `main.rs` file, the `App` component needs to be updated to introduce some
 - `selected_film`: The film to be updated.
 - `force_get_films`: A flag that will be employed to force a refetch of the films list from the API.
 
-> **Note:** We are going to apply dynamic rendering again, this time to render a list of Film Cards only if the films list is not empty.
+```admonish
+We are going to apply dynamic rendering again, this time to render a list of Film Cards only if the films list is not empty.
+```
 
 `main.rs`
 ```diff
@@ -82,7 +84,9 @@ We will implement the delete film feature later.
 
 The `FilmModal` component also undergoes an update in the `on_cancel` callback to clear the selected film and close the modal, in case we decide not to create or update a film.
 
-> **Note:** We utilize the `clone` method to generate a copy of the selected film. This is because we're employing the same film object in the `FilmCard`. Remember, ownership rules apply![MEH a revisar]
+```admonish tip title="Passing state as props"
+We utilize the `clone` method to generate a copy of the selected film. This is because we're employing the same film object in the `FilmCard`. Check [Clone documentation](https://doc.rust-lang.org/rust-by-example/trait/clone.html) from Rust by Example to learn more about the `clone` method.
+```
 
 Finally, it's essential to modify the `FilmModal` component to:
 

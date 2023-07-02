@@ -24,11 +24,11 @@ rustup target add wasm32-unknown-unknown
 
 ### Step 3: Create a Frontend Crate
 
-Create a new frontend crate by executing:
+Create a new frontend crate from root of our project by executing:
 
 ```bash
-cargo new --bin demo
-cd demo
+cargo new --bin front
+cd front
 ```
 
 ### Step 4: Add Dioxus and the Web Renderer as Dependencies

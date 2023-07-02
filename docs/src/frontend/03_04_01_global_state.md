@@ -66,8 +66,10 @@ pub fn FilmModal<'a>(cx: Scope<'a, FilmModalProps>) -> Element<'a> {
 }
 ```
 
-This demonstrates an additional concept of Dioxus: dynamic rendering. Essentially, the component is only rendered if the condition is met.
-> **Note:** Dynamic rendering is a technique that enables rendering different content based on a condition. Further information can be found in the [Dioxus Dynamic Rendering documentation](https://dioxuslabs.com/docs/0.3/guide/en/interactivity/dynamic_rendering.html)
+This demonstrates an additional concept of Dioxus: **dynamic rendering**. Essentially, the component is only rendered if the condition is met.
+```admonish info title="Dynamic Rendering"
+Dynamic rendering is a technique that enables rendering different content based on a condition. Further information can be found in the [Dioxus Dynamic Rendering documentation](https://dioxuslabs.com/docs/0.3/guide/en/interactivity/dynamic_rendering.html)
+```
 
 `main.rs`
 ```diff

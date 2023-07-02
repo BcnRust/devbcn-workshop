@@ -113,7 +113,7 @@ fn main() {
 
 With the logger initialized, you can now log messages to your browser's console. The following is an example of how you can log an informational message:
 
-```rust
+```admonish example
 log::info!("Message on my console");
 ```
 
