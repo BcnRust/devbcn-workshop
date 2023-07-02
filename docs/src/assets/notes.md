@@ -1,15 +1,16 @@
 
-- Create shuttle api
-- Add Shuttle.toml
-- Add it to the .gitignore
-- Create Cargo.toml with workspace
-- Create shared library
-- Create front crate
-- Create git repository
-- Review project (remove unneeded Cargo.lock files) and add dependencies to the shared library
+- Actix standalone --> link to repo
+- Tests --> link to repo
+- Mover endpoints to library
+- Hacer health-check endpoint
+- Repositorio para films
+- Crear film entity en shared y consumirlo en api: FromRow
+- Crear trait async
+- Implemenent trait con SQLx
+- Memory repo? --> link to repo
 - Add Serde with derive feature to all the crates
 - Create shared models
   - Derive
   - Uuid
   - Chrono
-- Create api AWS RDS & SQLx
+- http file for testing?

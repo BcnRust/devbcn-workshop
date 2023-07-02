@@ -19,6 +19,7 @@
   - [Debugging](./02_09_debugging.md)
   - [Instrumentation](./02_10_instrumentation.md)
   - [Watch Mode](./02_11_watch_mode.md)
+  - [Moving our endpoints to a library](./02_12_library.md)
 
 # Frontend
 - [Frontend](./frontend/03_frontend.md)
