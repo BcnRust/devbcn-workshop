@@ -142,3 +142,21 @@ Add this to the `.gitignore` file:
 static/
 ```
 
+Now, to solve a [Shuttle issue affecting static folders in workspaces](https://docs.shuttle.rs/resources/shuttle-static-folder), we need to create a `.ignore` file in the root folder with the following content:
+
+```bash
+!static/
+```
+
+Commit your changes:
+
+```bash
+git add .
+git commit -m "serve static files"
+```
+
+Now, in order to deploy to the cloud and avoid having issues with the `static` folder not being found (remember there's currently an issue in the Shuttle static folder implementation), copy the `static` folder to the root of your project and deploy:
+
+```bash
+cargo shuttle deploy
+```

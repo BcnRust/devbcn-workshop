@@ -32,7 +32,7 @@
   - [Implementing the endpoints](./backend/22_implementing_endpoints.md)
   - [Static dispatch](./backend/23_static_dispatching.md)
   - [Serving static files](./backend/24_serving_static_files.md)
-
+  - [Bonus: Makefile.toml](./backend/25_makefile_toml.md)
 
 # Frontend
 - [Frontend](./frontend/03_frontend.md)
