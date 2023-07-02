@@ -1,8 +1,7 @@
 
-- Actix standalone --> link to repo
 - Tests --> link to repo
-- Mover endpoints to library
-- Hacer health-check endpoint
+- Hacer health-check endpoint 
+- Config https://actix.rs/docs/application#configure
 - Repositorio para films
 - Crear film entity en shared y consumirlo en api: FromRow
 - Crear trait async

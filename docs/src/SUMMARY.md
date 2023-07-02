@@ -20,6 +20,8 @@
   - [Instrumentation](./02_10_instrumentation.md)
   - [Watch Mode](./02_11_watch_mode.md)
   - [Moving our endpoints to a library](./02_12_library.md)
+  - [Creating a health check endpoint](./02_13_health_check.md)
+  - [Using the configure method](./02_14_configure_method.md)
 
 # Frontend
 - [Frontend](./frontend/03_frontend.md)
