@@ -4,7 +4,7 @@
 
 # Before you start
 
-- [Prerequisites](./01_prerequisites.md)
+- [Prerequisites](./prerequisites.md)
 
 # Backend
 - [Backend](./backend/00_backend.md)
