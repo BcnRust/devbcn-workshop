@@ -42,7 +42,7 @@ cargo shuttle run
 
 You should see something like this:
 
-![shuttle_run](./assets/22/cargo_shuttle_run.png)
+![shuttle_run](../assets/22/cargo_shuttle_run.png)
 
 Now *curl* the `/` route:
 

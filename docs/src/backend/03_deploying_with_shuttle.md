@@ -16,7 +16,7 @@ name = "name_you_want"
 
 Your directory structure should look like this:
 
-![Shuttle.toml](./assets/23/shuttle_toml.png)
+![Shuttle.toml](../assets/23/shuttle_toml.png)
 
 **Commit** the changes to your repository.
 
@@ -35,7 +35,7 @@ cargo shuttle deploy
 
 You **should get an error message** similar to this one:
 
-![Error Message](./assets/23/login_error.png)
+![Error Message](../assets/23/login_error.png)
 
 
 ### Login to Shuttle
@@ -97,7 +97,7 @@ cargo shuttle deploy
 
 You should see in your terminal how everything is being deployed and compiled in the [Shuttle](https://shuttle.rs) cloud. This can take a while, so be patient and wait for a message like the one below:
 
-![deployed](./assets/23/deployed.png)
+![deployed](../assets/23/deployed.png)
 
 Browse to the URI shown in the message or curl it to see the result:
 
