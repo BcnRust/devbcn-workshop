@@ -5,7 +5,3 @@
 - Implemenent trait con SQLx
 - Memory repo? --> link to repo
 - Add Serde with derive feature to all the crates
-- Create shared models
-  - Derive
-  - Uuid
-  - Chrono

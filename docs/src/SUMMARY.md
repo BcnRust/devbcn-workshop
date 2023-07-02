@@ -26,6 +26,8 @@
   - [Films endpoints](./backend/16_films_endpoints.md)
   - [Models](./backend/17_models.md)
   - [Serde](./backend/18_serde.md)
+  - [Film Repository](./backend/19_film_repository.md)
+  - [Implementing Film Repository](./backend/20_implementing_trait.md)
 
 # Frontend
 - [Frontend](./frontend/03_frontend.md)
