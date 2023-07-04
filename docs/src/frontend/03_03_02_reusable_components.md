@@ -61,6 +61,7 @@ When you want to use props inside your components, here's how to do it: `"{cx.pr
 
 First up, we're creating a button. Since we'll be using this in various spots, it's a smart move to make it a reusable component.
 
+`components/button.rs`
 ```rust
 use dioxus::prelude::*;
 
@@ -100,7 +101,7 @@ Just like we did with the components, we're going to set up a models folder insi
 
 Here's what we're working with for these files:
 
-`mod.rs`
+`models/mod.rs`
 ```rust
 mod button;
 mod film;
@@ -109,7 +110,7 @@ pub use button::ButtonType;
 pub use film::FilmModalVisibility;
 ```
 
-`button.rs`
+`models/button.rs`
 ```rust
 use std::fmt;
 
@@ -128,13 +129,27 @@ impl fmt::Display for ButtonType {
 }
 ```
 
-`film.rs`
+`models/film.rs`
 ```rust
 pub struct FilmModalVisibility(pub bool);
 ```
 
 But wait, what's that `impl` thing in `button.rs`? This is where Rust's implementation blocks come in. We're using `impl` to add methods to our `ButtonType` enum. Specifically, we're implementing the `Display` trait, which gives us a standard way to display our enum as a string. The `fmt` method determines how each variant of the enum should be formatted as a string. So, when we use `button_type.to_string()` in our Button component, it will return the right Tailwind classes based on the button type. Handy, right?
 
+### Update components module
+Add the `button` module to the `components` module.
+
+`components/mod.rs`
+```diff
++mod button;
+mod footer;
+mod header;
+
++pub use button::Button;
+pub use footer::Footer;
+pub use header::Header;
+
+```
 ## Film Card
 
 Moving along, our next creation is the Film Card component. Its role is to present the specifics of a film in our list. Moreover, it will integrate a pair of Button components allowing us to edit and delete the film.
