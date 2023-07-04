@@ -46,11 +46,16 @@ members = [
 
 ### Step 4: Add Dioxus and the Web Renderer as Dependencies
 
-Add Dioxus and the web renderer as dependencies to your project. This step modifies your `Cargo.toml` file:
+Add Dioxus and the web renderer as dependencies to your project, modify your `Cargo.toml` file as follows:
 
-```bash
-cargo add dioxus
-cargo add dioxus-web
+
+```rust
+...
+
+[dependencies]
+# dioxus
+dioxus = "0.3.2"
+dioxus-web = "0.3.2"
 ```
 
 ## Tailwind Configuration
