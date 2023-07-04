@@ -31,6 +31,19 @@ cargo new --bin front
 cd front
 ```
 
+Update the project's workspace configuration by adding the following lines to the `Cargo.toml` file:
+
+```diff
+[workspace]
+members = [
+    "api/lib",
+    "api/shuttle",
+    "shared",
++   "front",
+]
+
+```
+
 ### Step 4: Add Dioxus and the Web Renderer as Dependencies
 
 Add Dioxus and the web renderer as dependencies to your project. This step modifies your `Cargo.toml` file:
