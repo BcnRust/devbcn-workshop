@@ -32,6 +32,7 @@ use models::FilmModalVisibility;
 
 fn App(cx: Scope) -> Element {
     use_shared_state_provider(cx, || FilmModalVisibility(false));
+    let is_modal_visible = use_shared_state::<FilmModalVisibility>(cx).unwrap();
 +   let films = use_state::<Option<Vec<Film>>>(cx, || None);
 +   let selected_film = use_state::<Option<Film>>(cx, || None);
 +   let force_get_films = use_state(cx, || ());
@@ -264,4 +265,18 @@ pub fn FilmModal<'a>(cx: Scope<'a, FilmModalProps>) -> Element<'a> {
         }
     ))
 }
+```
+
+Finally add `uuid` dependency to the `Cargo.toml` file.
+
+```diff
+...
+[dependencies]
+# shared
+shared = { path = "../shared" }
+# dioxus
+dioxus = "0.3.2"
+dioxus-web = "0.3.2"
+wasm-logger = "0.2.0"
++uuid = { version = "1.3.4", features = ["serde", "v4", "js"] }
 ```
