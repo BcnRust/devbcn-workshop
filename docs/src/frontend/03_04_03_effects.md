@@ -79,12 +79,19 @@ cargo add reqwest
 
 To streamline future requests, we will create a `films_endpoint()` function to return the URL of our API endpoint.
 
-Here are the necessary modifications for the `App` component:
+First install some missing dependencies.
+
+```bash
+cargo add web-sys
+cargo add serde
+```
+
+After that, here are the necessary modifications for the `App` component:
 
 ```diff
 ...
 
-+const API_ENDPOINT: &str = "api/v1";
++const API_ENDPOINT: &str = "api";
 
 +fn films_endpoint() -> String {
 +   let window = web_sys::window().expect("no global `window` exists");

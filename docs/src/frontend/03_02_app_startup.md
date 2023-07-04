@@ -100,6 +100,7 @@ The first step towards this involves installing the `wasm-logger` crate. You can
 # dioxus
 dioxus = "0.3.2"
 dioxus-web = "0.3.2"
++log = "0.4.19"
 +wasm-logger = "0.2.0"
 ```
 
