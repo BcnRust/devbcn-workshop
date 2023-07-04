@@ -98,12 +98,19 @@ module.exports = {
 
 ### Step 4: Create an Input CSS File
 
-Create an `input.css` file and populate it with the following content:
+Create an `input.css` file at the root of `front` crate and populate it with the following content:
 
 ```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+```
+
+### Step 5: Tailwind animations
+Install npm package `tailwind-animated` for small animations:
+
+```bash
+npm install tailwindcss-animated --save-dev
 ```
 
 ## Linking Dioxus with Tailwind
@@ -112,7 +119,7 @@ To use Tailwind with Dioxus, create a `Dioxus.toml` file in your project's root 
 
 ### Step 1: Create a `Dioxus.toml` File
 
-The `Dioxus.toml` file should contain:
+The `Dioxus.toml` file, placed inside our `front` crate root,  should contain:
 
 ```toml
 [application]
@@ -160,6 +167,17 @@ style = []
 
 # Javascript code file
 script = []
+```
+
+## Update .gitignore
+Ignore node_modules folder in `.gitignore` file:
+
+```diff
+target/
+Secrets*.toml
+static/
++dist/
++node_modules/
 ```
 
 ## Additional Steps
