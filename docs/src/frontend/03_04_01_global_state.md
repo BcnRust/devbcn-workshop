@@ -8,8 +8,7 @@ The value should be initialized using a closure.
 
 `main.rs`
 ```diff
-+mod models;
-
+...
 use components::{FilmModal, Footer, Header};
 use dioxus::prelude::*;
 +use models::FilmModalVisibility;
