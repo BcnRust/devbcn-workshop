@@ -354,6 +354,10 @@ Let's update our `main.rs` file to include the Film Modal component. Film Card c
 
 `main.rs`
 ```diff
+#![allow(non_snake_case)]
+// import the prelude to get access to the `rsx!` macro and the `Scope` and `Element` types
++mod components;
++mod models;
 ...
 
 -use components::{Footer, Header};
