@@ -83,6 +83,11 @@ pub fn Button<'a>(
 
 Notice that we're importing `models::ButtonType` here. This is an enum that helps us define the different button types we might use in our app. By using this, we can easily switch up the button styles based on our needs.
 
+Button props are pretty straightforward.
+- `button_type` prop that takes a `ButtonType` enum and assign the right Tailwind classes to the button.
+- `onclick` prop that takes an `EventHandler` for the click event, and a
+- `children` prop that takes an `Element` for the button text, icon or whatever `Element` desired.
+
 Just like we did with the components, we're going to set up a models folder inside our frontend directory. Here, we'll create a `button.rs` file to hold our Button models. While we're at it, let's also create a `film.rs` file for our Film models. We'll need those soon!
 
 ```bash
