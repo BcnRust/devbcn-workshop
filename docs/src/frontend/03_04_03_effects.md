@@ -92,7 +92,7 @@ After that, here are the necessary modifications for the `App` component:
 ```diff
 ...
 
-+const API_ENDPOINT: &str = "api";
++const API_ENDPOINT: &str = "api/v1";
 
 +fn films_endpoint() -> String {
 +   let window = web_sys::window().expect("no global `window` exists");
