@@ -46,3 +46,4 @@
     - [Local state](./frontend/03_04_02_local_state.md)
     - [App effects](./frontend/03_04_03_effects.md)
   - [Event handlers](./frontend/03_05_event_handlers.md)
+  - [Building](./frontend/03_06_building.md)
