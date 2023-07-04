@@ -151,7 +151,7 @@ pub use header::Header;
 ```
 
 ```admonish warning title="Add shared models dependency"
-We should add `shared = { path = "../../shared" }` inside our [dependencies] on front's `Cargo.toml` file.
+We should add `shared = { path = "../shared" }` inside our [dependencies] on front's `Cargo.toml` file.
 
 ```
 
