@@ -79,11 +79,12 @@ cargo add reqwest
 
 To streamline future requests, we will create a `films_endpoint()` function to return the URL of our API endpoint.
 
-First install some missing dependencies.
+First install some missing dependencies by updating our `Cargo.toml`.
 
-```bash
-cargo add web-sys
-cargo add serde
+```diff
++reqwest = { version = "0.11.18", features = ["json"] }
++web-sys = "0.3.64"
++serde = { version = "1.0.164", features = ["derive"] }
 ```
 
 After that, here are the necessary modifications for the `App` component:
