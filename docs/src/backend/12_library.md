@@ -35,7 +35,7 @@ As you can see, adding a local dependency is trivial. You just need to specify t
 
 ## Moving the endpoints
 
-Open the `api > shuttle > src` folder and create a new file called `health.rs`. This file will contain just one endpoint that will be used to check the health of the API, but for the sake of the example, we are going to **temporary move** our previous endpoints here.
+Open the `api > lib > src` folder and create a new file called `health.rs`. This file will contain just one endpoint that will be used to check the health of the API, but for the sake of the example, we are going to **temporary move** our previous endpoints here.
 
 Copy the following code in `api > shuttle > src > main.rs` to our recently created file `health.rs`:
 
