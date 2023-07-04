@@ -148,8 +148,13 @@ mod header;
 +pub use button::Button;
 pub use footer::Footer;
 pub use header::Header;
+```
+
+```admonish warning title="Add shared models dependency"
+We should add `shared = { workspace = true }` inside our [dependencies] on front's `Cargo.toml` file.
 
 ```
+
 ## Film Card
 
 Moving along, our next creation is the Film Card component. Its role is to present the specifics of a film in our list. Moreover, it will integrate a pair of Button components allowing us to edit and delete the film.
