@@ -94,8 +94,13 @@ For applications that run in the browser, having a logging mechanism can be very
 
 The first step towards this involves installing the `wasm-logger` crate. You can do this by running the following command:
 
-```bash
-cargo add wasm-logger
+```diff
+...
+[dependencies]
+# dioxus
+dioxus = "0.3.2"
+dioxus-web = "0.3.2"
++wasm-logger = "0.2.0"
 ```
 
 Once `wasm-logger` is installed, you need to initialize it in your `main.rs` file. Here's how you can do it:
