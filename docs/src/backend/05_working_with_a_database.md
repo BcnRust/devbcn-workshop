@@ -6,7 +6,7 @@ You may be already thinking about how to provision that database both locally an
 
 ## Using Shuttle Shared Databases
 
-Open [this link to the Shuttle Docs](https://shuttle.rs/docs/shared-databases) and follow the instructions to create a shared database in [AWS](https://aws.amazon.com/).
+Open [this link to the Shuttle Docs](https://docs.shuttle.rs/resources/shuttle-shared-db) and follow the instructions to create a shared database in [AWS](https://aws.amazon.com/).
 
 As you will be able to see, just by using a [macro](https://doc.rust-lang.org/reference/procedural-macros.html) we will be able to get a database connection injected into our code and a database fully provisioned both locally and in the cloud.
 
