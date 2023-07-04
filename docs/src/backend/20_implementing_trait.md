@@ -26,7 +26,7 @@ Now, let's add a `new` associated function to the struct that will make us easie
 
 ```rust
 impl PostgresFilmRepository {
-    pub async fn new(pool: sqlx::PgPool) -> Self {
+    pub fn new(pool: sqlx::PgPool) -> Self {
         Self { pool }
     }
 }
