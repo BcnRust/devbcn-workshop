@@ -71,6 +71,7 @@ Install [Node Package Manager (npm)](https://docs.npmjs.com/downloading-and-inst
 Initialize a new Tailwind CSS project using the following command:
 
 ```bash
+cd front
 npx tailwindcss init
 ```
 
