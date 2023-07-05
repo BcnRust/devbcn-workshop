@@ -14,7 +14,7 @@ By the end of the workshop, you will have built a functional movie collection ma
 - Basic knowledge of the Rust programming language
 - Familiarity with HTML, CSS, and JavaScript is helpful but not required
 
-Check the [Prerequisites](./01_prerequisites.md) section of the workshop guide for more details.
+Check the [Prerequisites](./prerequisites.md) section of the workshop guide for more details.
 
 **Workshop Duration: 2 hours**
 
