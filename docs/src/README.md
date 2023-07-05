@@ -33,11 +33,12 @@ Check the [Prerequisites](./01_prerequisites.md) section of the workshop guide f
   - Implementing CRUD operations for movies
 
 3. Designing the Front-End with Dioxus
-  - Introduction to Dioxus and its features
-  - Setting up a Dioxus project
-  - Creating components for movie listing
-  - Connecting components with API endpoints
-  - Styling the front-end with CSS
+  - Introduction to Dioxus
+  - Setup and installation
+  - Components
+  - State management
+  - Event handling
+  - Building
 ```
 
 ```admonish info
