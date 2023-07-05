@@ -7,7 +7,7 @@ Welcome to the this workshop! In this hands-on workshop, we will guide you throu
 
 Throughout the workshop, you will learn how to set up a Rust project with Actix-Web, implement CRUD operations for movies, establish database connectivity with PostgreSQL using SQLx, design a responsive front-end with Dioxus, and deploy the application to a hosting environment using Shuttle.
 
-By the end of the workshop, you will have built a functional movie collection manager application. You will understand how to create APIs with Actix-Web, work with databases using SQLx, design and develop the front-end with Dioxus, and deploy the application using Shuttle. This workshop will provide you with practical experience and insights into building full stack applications with Rust.
+By the end of the workshop, you will have built a [functional movie collection manager application](https://devbcn.shuttleapp.rs/). You will understand how to create APIs with Actix-Web, work with databases using SQLx, design and develop the front-end with Dioxus, and deploy the application using Shuttle. This workshop will provide you with practical experience and insights into building full stack applications with Rust.
 
 ## Prerequisites:
 
