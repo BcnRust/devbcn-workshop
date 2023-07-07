@@ -61,7 +61,7 @@ When you want to use props inside your components, here's how to do it: `"{cx.pr
 
 First up, we're creating a button. Since we'll be using this in various spots, it's a smart move to make it a reusable component.
 
-`components/button.rs`
+`front/src/components/button.rs`
 ```rust
 use dioxus::prelude::*;
 
@@ -101,7 +101,7 @@ Just like we did with the components, we're going to set up a models folder insi
 
 Here's what we're working with for these files:
 
-`models/mod.rs`
+`front/src/models/mod.rs`
 ```rust
 mod button;
 mod film;
@@ -110,7 +110,7 @@ pub use button::ButtonType;
 pub use film::FilmModalVisibility;
 ```
 
-`models/button.rs`
+`front/src/models/button.rs`
 ```rust
 use std::fmt;
 
@@ -129,7 +129,7 @@ impl fmt::Display for ButtonType {
 }
 ```
 
-`models/film.rs`
+`front/src/models/film.rs`
 ```rust
 pub struct FilmModalVisibility(pub bool);
 ```
@@ -139,7 +139,7 @@ But wait, what's that `impl` thing in `button.rs`? This is where Rust's implemen
 ### Update components module
 Add the `button` module to the `components` module.
 
-`components/mod.rs`
+`front/src/components/mod.rs`
 ```diff
 +mod button;
 mod footer;
@@ -159,7 +159,7 @@ We should add `shared = { path = "../shared" }` inside our [dependencies] on fro
 
 Moving along, our next creation is the Film Card component. Its role is to present the specifics of a film in our list. Moreover, it will integrate a pair of Button components allowing us to edit and delete the film.
 
-`film_card.rs`
+`front/src/components/film_card.rs`
 ```rust
 use crate::{components::Button, models::ButtonType};
 use dioxus::prelude::*;
@@ -244,7 +244,7 @@ This Film Card component is indeed more intricate than the Button component, due
 
 As the grand finale of our components building phase, we're constructing the Film Modal component. This vital piece will facilitate the creation or update of a film. Its appearance will be commanded by a button located in the app's header or the `edit` button inside the Film Card.
 
-`film_modal.rs`
+`front/src/components/film_modal.rs`
 ```rust
 use dioxus::prelude::*;
 
@@ -352,7 +352,7 @@ At the moment, we're primarily focusing on establishing the basic structural fra
 
 Let's update our `main.rs` file to include the Film Modal component. Film Card component will be added later.
 
-`main.rs`
+`front/src/main.rs`
 ```diff
 #![allow(non_snake_case)]
 // import the prelude to get access to the `rsx!` macro and the `Scope` and `Element` types
