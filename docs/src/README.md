@@ -16,7 +16,7 @@ By the end of the workshop, you will have built a [functional movie collection m
 
 Check the [Prerequisites](./prerequisites.md) section of the workshop guide for more details.
 
-**Workshop Duration: 2 hours**
+**Workshop Duration: 4,5 hours**
 
 ## Workshop schedule
 
