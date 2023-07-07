@@ -6,7 +6,7 @@ We will utilize a functionality similar to React's Context. This approach allows
 
 The value should be initialized using a closure.
 
-`main.rs`
+`front/src/main.rs`
 ```diff
 ...
 use components::{FilmModal, Footer, Header};
@@ -24,7 +24,7 @@ fn App(cx: Scope) -> Element {
 
 Now, by leveraging the `use_shared_state` hook, we can both retrieve the state and modify it. Therefore, it is necessary to incorporate this hook in locations where we need to read or alter the Film Modal visibility.
 
-`header.rs`
+`front/src/components/header.rs`
 ```diff
 use dioxus::prelude::*;
 +use crate::{
@@ -65,7 +65,7 @@ pub fn Header(cx: Scope) -> Element {
 
 The value can be updated using the `write` method, which returns a mutable reference to the value. Consequently, we can use the `=` operator to update the visibility of the Film Modal when the button is clicked.
 
-`film_modal.rs`
+`front/src/components/film_modal.rs`
 ```diff
 ...
 -use crate::models::{ButtonType};
@@ -87,7 +87,7 @@ This demonstrates an additional concept of Dioxus: **dynamic rendering**. Essent
 Dynamic rendering is a technique that enables rendering different content based on a condition. Further information can be found in the [Dioxus Dynamic Rendering documentation](https://dioxuslabs.com/docs/0.3/guide/en/interactivity/dynamic_rendering.html)
 ```
 
-`main.rs`
+`front/src/main.rs`
 ```diff
 ...
 

@@ -78,7 +78,7 @@ let create_or_update_film = move |film: Film| {
 
 All the subsequent modifications will be implemented on our `App` component.
 
-`main.rs`
+`front/src/main.rs`
 ```diff
 ...
 

@@ -28,6 +28,7 @@ Sure, here's a revised version with a more formal tone:
 
 We will begin by adapting our `FilmModal` component. This will be modified to pre-populate the form with the values of the film that is currently being edited. To accomplish this, we will use the `use_effect` hook.
 
+`front/src/components/film_modal.rs`
 ```diff
 ...
 
@@ -81,6 +82,7 @@ To streamline future requests, we will create a `films_endpoint()` function to r
 
 First install some missing dependencies by updating our `Cargo.toml`.
 
+`front/Cargo.toml`
 ```diff
 +reqwest = { version = "0.11.18", features = ["json"] }
 +web-sys = "0.3.64"
@@ -89,6 +91,7 @@ First install some missing dependencies by updating our `Cargo.toml`.
 
 After that, here are the necessary modifications for the `App` component:
 
+`front/src/main.rs`
 ```diff
 ...
 

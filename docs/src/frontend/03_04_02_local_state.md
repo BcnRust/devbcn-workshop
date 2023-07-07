@@ -19,7 +19,7 @@ In the `main.rs` file, the `App` component needs to be updated to introduce some
 We are going to apply dynamic rendering again, this time to render a list of Film Cards only if the films list is not empty.
 ```
 
-`main.rs`
+`front/src/main.rs`
 ```diff
 ...
 -use components::{FilmModal, Footer, Header};
@@ -99,6 +99,7 @@ Finally, it's essential to modify the `FilmModal` component to:
  `on_create_or_update` callback to create or update the `draft_film` and close the modal.
 - Assign values and change handlers to the input fields.
 
+`front/src/components/film_modal.rs`
 ```diff
 use dioxus::prelude::*;
 +use shared::models::Film;
@@ -269,6 +270,7 @@ pub fn FilmModal<'a>(cx: Scope<'a, FilmModalProps>) -> Element<'a> {
 
 Finally add `uuid` dependency to the `Cargo.toml` file.
 
+`front/Cargo.toml`
 ```diff
 ...
 [dependencies]
