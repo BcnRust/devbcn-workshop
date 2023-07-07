@@ -4,7 +4,7 @@ Today, our API will work with a [Postgres](https://www.postgresql.org/) database
 
 Even if that never happens (which is the most probable thing) we will still want to **decouple our API from the database** to make it easier to test and maintain.
 
-To do that, we will leverate [traits](https://doc.rust-lang.org/book/ch10-02-traits.html) to define the behavior of our **film repository**.
+To do that, we will leverage [traits](https://doc.rust-lang.org/book/ch10-02-traits.html) to define the behavior of our **film repository**.
 
 This will also allow us to take a look at:
 - [traits](https://doc.rust-lang.org/book/ch10-02-traits.html)
