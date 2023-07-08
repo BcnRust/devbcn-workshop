@@ -10,7 +10,7 @@ This will help us to get acquainted with [SQLx](https://github.com/launchbadge/s
 
 Don't worry about how to retrieve the information from the database, we will do that in a moment. Just focus on creating and endpoint that will return a string. The string can be anything you want and the route should be `/version`.
 
-If you're not sure about how to do it, uncollapse the section below to see the solution.
+If you're not sure about how to do it, expand the section below to see the solution.
 
 ~~~admonish tip title="Solution" collapsible=true
 Open the `main.rs` file in the `api > shuttle > src` folder and add the following code:
@@ -124,7 +124,7 @@ async fn version(db: actix_web::web::Data<sqlx::PgPool>) -> String {
 
 There are a couple of things going on here, so let's break it down.
 
-First of all, it's worth noticing that **we changed the return type** of the function to `String`. This obbeys to two different reasons:
+First of all, it's worth noticing that **we changed the return type** of the function to `String`. This is for two different reasons:
 
 1. We don't want our endpoint to fail. If the query fails, we will have to return an error message as a `String`.
 1. We need that return to be a `String` because the version of the database will come to us as a `String`.
@@ -133,7 +133,7 @@ On the other hand, we have the [sqlx::query_scalar](https://docs.rs/sqlx/latest/
 
 As you can see, the **query is pretty simple**. We're just selecting the version of the database. The most interesting part in there is that we need to use the `.get_ref()` method to get a **reference** to the inner `sqlx::PgPool` from the `actix_web::web::Data<sqlx::PgPool>`.
 
-Finally, we have the [match expression](https://doc.rust-lang.org/reference/expressions/match-expr.html). The [sqlx::query_scalar](https://docs.rs/sqlx/latest/sqlx/query/struct.QueryScalar.html) function will return a [Result](https://doc.rust-lang.org/std/result/enum.Result.html) with either the version of the database or an error. With the [match expression](https://doc.rust-lang.org/reference/expressions/match-expr.html) we're coverging both cases and we will make sure that we will always return a `String`.
+Finally, we have the [match expression](https://doc.rust-lang.org/reference/expressions/match-expr.html). The [sqlx::query_scalar](https://docs.rs/sqlx/latest/sqlx/query/struct.QueryScalar.html) function will return a [Result](https://doc.rust-lang.org/std/result/enum.Result.html) with either the version of the database or an error. With the [match expression](https://doc.rust-lang.org/reference/expressions/match-expr.html) we're covering both cases and we will make sure that we will always return a `String`.
 
 ```admonish tip
 Note that most of the time we don't need the return keyword in Rust. The last expression in a function will be the return value.
@@ -153,5 +153,3 @@ For now, let's commit our changes:
 git add .
 git commit -m "add version endpoint"
 ```
-
-

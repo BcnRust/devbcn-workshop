@@ -81,7 +81,7 @@ The problem is that we haven't created the project environment yet. Let's do tha
 cargo shuttle project start
 ```
 
-If everthing went well, you should see something like this:
+If everything went well, you should see something like this:
 
 ![project started](../assets/backend/03/project_started.png)
 

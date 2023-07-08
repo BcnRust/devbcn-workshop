@@ -33,7 +33,7 @@ async fn health() -> HttpResponse {
 
 - Configure the services in your shuttle crate. Remove the previous services and add the new one.
 
-Your `api > shuttle> src > main.rs` file should look like this:
+Your `api > shuttle > src > main.rs` file should look like this:
 
 ```rust
 use actix_web::web::ServiceConfig;
