@@ -2,7 +2,7 @@
 
 Although `testing` is a little bit out of the scope of this workshop, we thought it would be interesting to show you how to write tests for your API.
 
-These will be simple examples of how to test the `health` endpoint. 
+These will be simple examples of how to test the `health` endpoint.
 
 ```admonish info title="Learn more"
 For more information about testing in [Actix Web](https://actix.rs), please refer to the [Actix Web documentation](https://actix.rs/docs/testing/).
@@ -33,10 +33,10 @@ mod tests {
     #[actix_rt::test]
     async fn health_check_works() {
         let res = health().await;
-        
+
         assert!(res.status().is_success());
         assert_eq!(res.status(), StatusCode::OK);
-        
+
         let data = res
             .headers()
             .get("health-check")
@@ -74,9 +74,9 @@ The name of the header is `version`, not `health-check`. So, the either we chang
 ~~~admonish tip title="Solution" collapsible=true
 Declare the constant in the `health.rs` file and then use it in the `health` function and in the test:
 
-```rust 
+```rust
 const API_VERSION: &str = "v0.0.1";
-``` 
+```
 ~~~
 
 ## Integration tests
@@ -102,10 +102,10 @@ async fn health_check_works() {
         .to_request();
 
     let res = actix_web::test::call_service(&mut app, req).await;
-    
+
     assert!(res.status().is_success());
     assert_eq!(res.status(), StatusCode::OK);
-    let data = res.headers().get("version").and_then(|h| h.to_str().ok());
+    let data = res.headers().get("health-check").and_then(|h| h.to_str().ok());
     assert_eq!(data, Some(API_VERSION));
 }
 ```
@@ -128,4 +128,3 @@ Don't forget to **commit** your changes:
 git add .
 git commit -m "add unit and integration tests"
 ```
- 
