@@ -24,7 +24,7 @@ async fn actix_web(
 }
 ```
 
-[Shuttle](https://www.shuttle.rs) has generated a simple `hello-world` [Actix-web](https://actix.rs) application for us. 
+[Shuttle](https://www.shuttle.rs) has generated a simple `hello-world` [Actix Web](https://actix.rs) application for us. 
 
 As you can see, it's pretty straight-forward.
 
@@ -59,12 +59,12 @@ And that's how easy it is to create a simple API with [Shuttle](https://www.shut
 > Try to add more routes and see what happens!
 
 ```admonish
-We're using [Actix-web](https://actix.rs) as our web framework, but **you can use any other framework** supported by [Shuttle](https://www.shuttle.rs).
+We're using [Actix Web](https://actix.rs) as our web framework, but **you can use any other framework** supported by [Shuttle](https://www.shuttle.rs).
 
 Check out the [Shuttle documentation](https://docs.shuttle.rs/introduction/welcome) to learn more. Browse through the `Examples` section to see how to use [Shuttle](https://www.shuttle.rs) with other frameworks.
 
 At the moment of writing this, [Shuttle](https://www.shuttle.rs/) supports:
-- [Actix-web](https://actix.rs)
+- [Actix Web](https://actix.rs)
 - [Axum](https://github.com/tokio-rs/axum)
 - [Salvo](https://next.salvo.rs/)
 - [Poem](https://github.com/poem-web/poem)

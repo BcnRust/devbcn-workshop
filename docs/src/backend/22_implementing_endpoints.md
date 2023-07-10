@@ -11,7 +11,7 @@ Indeed, we **shouldn't care about the implementation details** of the `FilmRepos
 So, it seems clear that we need to get access to the `FilmRepository` instance in our handlers. But how can we do that?
 
 ```admonish tip
-Refresh your memory by reading about how to handle State in Actix-web in the [official documentation](https://actix.rs/docs/application/#state).
+Refresh your memory by reading about how to handle State in Actix Web in the [official documentation](https://actix.rs/docs/application/#state).
 ```
 
 As you can see, it should be pretty straightforward isn't it? But, wait a minute. We have a problem here.
@@ -152,4 +152,3 @@ Commit your changes:
 git add .
 git commit -m "implement film endpoints"
 ```
-

@@ -4,7 +4,7 @@ The goal of this part of the workshop is to create a simple API that will be use
 
 ## Tools and Frameworks
 
-- [Actix-web](https://actix.rs/)
+- [Actix Web](https://actix.rs/)
 - [SQLx](https://github.com/launchbadge/sqlx)
 - [Shuttle](https://www.shuttle.rs/)
 

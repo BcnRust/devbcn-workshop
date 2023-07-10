@@ -53,9 +53,9 @@ For the `API`, we will create **two crates**:
 Having two different crates is totally optional, but it will allow us to have a cleaner project structure and will make it easy to reuse the `API` library code if we decide to not use [Shuttle](https://www.shuttle.rs/) in the future.
 
 ``` admonish tip title="Shuttle"
-Shuttle will allow us to run our API locally and deploy it to the cloud with minial effort but it is not required to build the API.
+Shuttle will allow us to run our API locally and deploy it to the cloud with minimal effort but it is not required to build the API.
 
-We could decide to use a different executable to run our API that would use the `lib` crate as a dependency. For instance, we could use `Actix-web` directly to create such a binary and release it as a Docker image.
+We could decide to use a different executable to run our API that would use the `lib` crate as a dependency. For instance, we could use Actix Web directly to create such a binary and release it as a Docker image.
 ```
 
 ### Creating the `lib` crate

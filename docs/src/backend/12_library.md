@@ -2,7 +2,7 @@
 
 The idea behind this section is to **move our endpoints** to a library so that we can **reuse** them in case we want to provide a different binary that doesn't rely on [Shuttle](https://shuttle.rs).
 
-Imagine, for example, that you want to deploy your API to your cloud of choice. Most probably you'll want to use a container to do so. In that case, having our endpoints in a library will allow us to create a binary that works purely on [Actix-web](https://actix.rs).
+Imagine, for example, that you want to deploy your API to your cloud of choice. Most probably you'll want to use a container to do so. In that case, having our endpoints in a library will allow us to create a binary that works purely on [Actix Web](https://actix.rs).
 
 ## Adding a local dependency
 
