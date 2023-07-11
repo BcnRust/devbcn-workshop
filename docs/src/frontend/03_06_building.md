@@ -11,3 +11,6 @@ This will build our frontend for production and place the output in the `shuttle
 ```bash
 cargo shuttle deploy
 ```
+
+Once the app is deploy it will look like this if everything went well.
+![Alt text](../assets/frontend-final.png)
