@@ -20,7 +20,7 @@ Let's add the `shuttle-static-folder` and the [actix-files](https://docs.rs/acti
 [dependencies]
 # static
 actix-files = "0.6.2"
-shuttle-static-folder = "0.20.0"
+shuttle-static-folder = "0.21.0"
 ```
 
 ## Serving the static files

@@ -20,7 +20,7 @@ Go to the `Cargo.toml` file in the `api > shuttle` folder and add the following 
 [dependencies]
 ...
 # database
-shuttle-shared-db = { version = "0.20.0", features = ["postgres"] }
+shuttle-shared-db = { version = "0.21.0", features = ["postgres"] }
 sqlx = { version = "0.6.3", default-features = false, features = [ "runtime-actix-native-tls", "macros", "postgres", "uuid", "chrono", "json" ] }
 ```
 
@@ -28,7 +28,7 @@ sqlx = { version = "0.6.3", default-features = false, features = [ "runtime-acti
 If you want to learn more about how to add dependencies to your `Cargo.toml` file, please refer to the [Cargo Docs](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html).
 ```
 
-We are adding the [shuttle-shared-db](https://docs.rs/shuttle-shared-db/0.20.0/shuttle_shared_db/) dependency to get the database connection injected into our code and the [SQLx](https://github.com/launchbadge/sqlx) dependency to be able to use the database connection.
+We are adding the [shuttle-shared-db](https://docs.rs/shuttle-shared-db/0.21.0/shuttle_shared_db/) dependency to get the database connection injected into our code and the [SQLx](https://github.com/launchbadge/sqlx) dependency to be able to use the database connection.
 
 Note that the [SQLx](https://github.com/launchbadge/sqlx) dependency has a lot of features enabled. We will use them later on in the project.
 
