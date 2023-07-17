@@ -11,4 +11,4 @@ By the end of the workshop, you will have built a functional movie collection ma
 
 ## Workshop Guide
 
-You can find the workshop guide [here](https://https://bcnrust.github.io/devbcn-workshop/).
+You can find the workshop guide [here](https://bcnrust.github.io/devbcn-workshop/).
