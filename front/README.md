@@ -138,10 +138,10 @@ npx tailwindcss -i ./input.css -o ./public/tailwind.css --watch
 - Run the following command in the root of the project to start the dioxus dev server:
 
 ```bash
-dioxus serve
+dioxus serve --port 8000
 ```
 
-- Open the browser to http://localhost:8080
+- Open the browser to http://localhost:8000
 
 # Usefull resources
 - [Movie posters](https://www.movieposters.com/)
