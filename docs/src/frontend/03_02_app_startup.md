@@ -83,7 +83,7 @@ npx tailwindcss -i ./input.css -o ./public/tailwind.css --watch
 2. **Launch Dioxus in serve mode**: Run the following command to start the Dioxus development server. This server will monitor your source code for changes, recompile your application as necessary, and serve the resulting web application.
 
 ```bash
-dioxus serve
+dioxus serve --port 8000
 ```
 
 Now, your development environment is up and running. Changes you make to your source code will automatically be reflected in the served application, thanks to the watching capabilities of both the Tailwind compiler and the Dioxus server. You're now ready to start building your Dioxus application!
