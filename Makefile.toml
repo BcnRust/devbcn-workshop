@@ -16,7 +16,7 @@ workspace = false
 cwd = "./front"
 install_crate = "dioxus-cli"
 command = "dioxus"
-args = ["serve"]
+args = ["serve", "--port", "8000"]
 
 [tasks.front-build]
 workspace = false
