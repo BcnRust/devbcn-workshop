@@ -22,8 +22,6 @@ Here's a quick look at how it works:
 }
 ```
 
-Sure, here's a revised version with a more formal tone:
-
 ## Film Modal
 
 We will begin by adapting our `FilmModal` component. This will be modified to pre-populate the form with the values of the film that is currently being edited. To accomplish this, we will use the `use_effect` hook.
