@@ -1,6 +1,6 @@
 # Watch Mode
 
-You may we thinking that it would be nice to have a way to **automatically restart the backend when you make changes to the code**. 
+You may be thinking that it would be nice to have a way to **automatically restart the backend when you make changes to the code**. 
 
 Well, you're in luck! Enter [cargo-watch](https://github.com/watchexec/cargo-watch).
 
