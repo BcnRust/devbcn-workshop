@@ -28,7 +28,7 @@ cargo watch -x build
 # or run the binary
 cargo shuttle run
 # or run the binary in watch mode
-cargo shuttle -x "shuttle run"
+cargo watch -x "shuttle run"
 ```
 
 As you can see, adding a local dependency is trivial. You just need to specify the path to the library.
