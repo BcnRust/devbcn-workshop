@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 
 use crate::models::ButtonType;
 
-#[inline_props]
+#[component]
 pub fn Button<'a>(
     cx: Scope<'a>,
     button_type: ButtonType,
