@@ -20,8 +20,15 @@ Go to the `Cargo.toml` file in the `api > shuttle` folder and add the following 
 [dependencies]
 ...
 # database
-shuttle-shared-db = { version = "0.21.0", features = ["postgres"] }
-sqlx = { version = "0.6.3", default-features = false, features = [ "runtime-actix-native-tls", "macros", "postgres", "uuid", "chrono", "json" ] }
+shuttle-shared-db = { version = "0.36.0", features = ["postgres"] }
+sqlx = { version = "0.7", default-features = false, features = [
+    "tls-native-tls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "json",
+] }
 ```
 
 ```admonish  title="Cargo Dependencies"

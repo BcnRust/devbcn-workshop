@@ -277,8 +277,8 @@ Finally add `uuid` dependency to the `Cargo.toml` file.
 # shared
 shared = { path = "../shared" }
 # dioxus
-dioxus = "0.3.2"
-dioxus-web = "0.3.2"
+dioxus = "0.4.3"
+dioxus-web = "0.4.3"
 wasm-logger = "0.2.0"
 +uuid = { version = "1.3.4", features = ["serde", "v4", "js"] }
 ```

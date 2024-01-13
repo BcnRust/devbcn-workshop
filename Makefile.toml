@@ -1,7 +1,7 @@
 # project tasks
 [tasks.api-run]
 workspace = false
-env = { RUST_LOG="info" }
+env = { RUST_LOG = "info" }
 install_crate = "cargo-shuttle"
 command = "cargo"
 args = ["shuttle", "run"]
@@ -15,7 +15,7 @@ args = ["run", "--bin", "api-actix"]
 workspace = false
 cwd = "./front"
 install_crate = "dioxus-cli"
-command = "dioxus"
+command = "dx"
 args = ["serve", "--port", "8000"]
 
 [tasks.front-build]
@@ -28,8 +28,8 @@ rm -rf api/shuttle/static static
 mkdir api/shuttle/static
 mkdir static
 cd front
-dioxus build --release
-# local development 
+dx build --release
+# local development
 cp -r dist/* ../api/shuttle/static
 # production
 cp -r dist/* ../static
@@ -100,4 +100,3 @@ cwd = "./docs"
 install_crate = "mdbook"
 command = "mdbook"
 args = ["serve"]
-

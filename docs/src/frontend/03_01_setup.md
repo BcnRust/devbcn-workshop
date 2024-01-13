@@ -54,8 +54,8 @@ Add Dioxus and the web renderer as dependencies to your project, modify your `Ca
 
 [dependencies]
 # dioxus
-dioxus = "0.3.2"
-dioxus-web = "0.3.2"
+dioxus = "0.4.3"
+dioxus-web = "0.4.3"
 ```
 
 ## Tailwind Configuration

@@ -30,6 +30,7 @@ members = [
     "api/shuttle",
     "shared"
 ]
+resolver = "2"
 ```
 
 We will add the `front` crate later, don't worry.
