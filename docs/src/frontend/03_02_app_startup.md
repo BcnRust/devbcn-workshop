@@ -98,8 +98,8 @@ The first step towards this involves installing the `wasm-logger` crate. You can
 ...
 [dependencies]
 # dioxus
-dioxus = "0.3.2"
-dioxus-web = "0.3.2"
+dioxus = "0.4.3"
+dioxus-web = "0.4.3"
 +log = "0.4.19"
 +wasm-logger = "0.2.0"
 ```

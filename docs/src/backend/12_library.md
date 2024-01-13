@@ -83,7 +83,14 @@ Now, if you compile, you should be getting errors from the compiler complaining 
 # actix
 actix-web = "4.3.1"
 # database
-sqlx = { version = "0.6.3", default-features = false, features = [ "runtime-actix-native-tls", "macros", "postgres", "uuid", "chrono", "json" ] }
+sqlx = { version = "0.7", default-features = false, features = [
+    "tls-native-tls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "json",
+] }
 # tracing
 tracing = "0.1"
 ```

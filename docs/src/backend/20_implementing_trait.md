@@ -32,7 +32,7 @@ impl PostgresFilmRepository {
 }
 ```
 
-```admonish 
+```admonish
 This sort of constructor pattern is very common in Rust and the convention is to use `new` as the name of the associated function. 
 ```
 
@@ -154,7 +154,14 @@ Add the [SQLx](https://github.com/launchbadge/sqlx) dependency to the `Cargo.tom
 
 ```toml
 # database
-sqlx = { version = "0.6.3", default-features = false, features = [ "runtime-actix-native-tls", "macros", "postgres", "uuid", "chrono", "json" ] }
+sqlx = { version = "0.7", default-features = false, features = [
+    "tls-native-tls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "json",
+] }
 ```
 
 And then add the `sqlx::FromRow` trait into the `derive` attribute of the `Film` and `CreateFilm` structs.

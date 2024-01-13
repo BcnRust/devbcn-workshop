@@ -22,4 +22,4 @@ tracing = { workspace = true }
 
 [dev-dependencies]
 actix-rt = "2"
-mockall = "0.11"
+mockall = "0.12.1"

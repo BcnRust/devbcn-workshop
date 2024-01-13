@@ -9,8 +9,8 @@ edition = "2021"
 # shared
 shared = { workspace = true }
 # dioxus
-dioxus = "0.3.2"
-dioxus-web = "0.3.2"
+dioxus = "0.4.3"
+dioxus-web = "0.4.3"
 reqwest = { version = "0.11.18", features = ["json"] }
 serde = { workspace = true }
 uuid = { workspace = true }

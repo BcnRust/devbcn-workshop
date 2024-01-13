@@ -20,20 +20,14 @@ Let's add the `shuttle-static-folder` and the [actix-files](https://docs.rs/acti
 [dependencies]
 # static
 actix-files = "0.6.2"
-shuttle-static-folder = "0.21.0"
 ```
 
 ## Serving the static files
 
 Now, let's refactor our `main.rs` file to serve the static files.
 
-Add this parameter to the `actix_web` function:
 
-```rust
- #[shuttle_static_folder::StaticFolder(folder = "static")] static_folder: PathBuf,
-```
-
-And then, let's modify our `ServiceConfig` to serve static files in the `/` path and the API in the `/api` path:
+Let's modify our `ServiceConfig` to serve static files in the `/` path and the API in the `/api` path:
 
 ```diff
 - cfg.app_data(film_repository)
@@ -47,11 +41,7 @@ And then, let's modify our `ServiceConfig` to serve static files in the `/` path
 +             api_lib::films::service::<api_lib::film_repository::PostgresFilmRepo+ sitory>,
 +         ),
 + )
-+ .service(
-+     actix_files::Files::new("/", static_folder)
-+         .show_files_listing()
-+         .index_file("index.html"),
-+ );
++ .service(Files::new("/", "static").index_file("index.html"));
 ```
 
 ~~~admonish tip title="Final Code" collapsible=true
@@ -84,11 +74,7 @@ async fn actix_web(
                     api_lib::films::service::<api_lib::film_repository::PostgresFilmRepository>,
                 ),
         )
-        .service(
-            actix_files::Files::new("/", static_folder)
-                .show_files_listing()
-                .index_file("index.html"),
-        );
+        .service(Files::new("/", "static").index_file("index.html"));
     };
 
     Ok(config.into())

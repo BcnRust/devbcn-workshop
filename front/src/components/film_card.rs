@@ -2,7 +2,7 @@ use crate::{components::Button, models::ButtonType};
 use dioxus::prelude::*;
 use shared::models::Film;
 
-#[inline_props]
+#[component]
 pub fn FilmCard<'a>(
     cx: Scope<'a>,
     film: &'a Film,

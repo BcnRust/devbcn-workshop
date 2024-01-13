@@ -58,8 +58,8 @@ Let's bring this dependency into our `api-lib` crate by adding it to the `Cargo.
 ```diff
 [dependencies]
 + # utils
-+ async-trait = "0.1"
-+ uuid = { version = "1.3", features = ["serde", "v4", "js"] }
++ async-trait = "0.1.68"
++ uuid = { version = "1.3.4", features = ["serde", "v4", "js"] }
 ```
 
 Now, let's mark our [trait](https://doc.rust-lang.org/book/ch10-02-traits.html) as `async` and add all the `use` statements we need:
