@@ -2,7 +2,7 @@
 
 In this section of the backend part of the workshop we'll learn how to **serve static files** with [Actix Web](https://actix.rs) and [Shuttle](https://shuttle.rs).
 
-The main goal here is to serve the statics files present in a folder called `static`. 
+The main goal here is to serve the statics files present in a folder called `static`.
 
 So the API will serve `statics` in the root path `/` and the `API endpoints` in the `/api` path.
 
@@ -19,7 +19,7 @@ Let's add the `shuttle-static-folder` and the [actix-files](https://docs.rs/acti
 ```toml
 [dependencies]
 # static
-actix-files = "0.6.2"
+actix-files = "0.6.6"
 ```
 
 ## Serving the static files
@@ -54,7 +54,7 @@ use std::path::PathBuf;
 
 #[shuttle_runtime::main]
 async fn actix_web(
-    #[shuttle_shared_db::Postgres()] pool: sqlx::PgPool,
+    #[shuttle_shared_db::Postgres] pool: sqlx::PgPool,
     #[shuttle_static_folder::StaticFolder(folder = "static")] static_folder: PathBuf,
 ) -> ShuttleActixWeb<impl FnOnce(&mut ServiceConfig) + Send + Clone + 'static> {
     // initialize the database if not already initialized

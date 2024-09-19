@@ -12,9 +12,13 @@ sqlx = { workspace = true }
 # actix
 actix-web = { workspace = true }
 actix-files = { workspace = true }
-actix-cors = "0.6.4"
+actix-cors = "0.7.0"
 # utils
 dotenv = "0.15"
 # tracing
-tracing =  { workspace = true }
-tracing-subscriber = { version= "0.3", features = ["env-filter", "json", "time"] }
+tracing = { workspace = true }
+tracing-subscriber = { version = "0.3", features = [
+    "env-filter",
+    "json",
+    "time",
+] }

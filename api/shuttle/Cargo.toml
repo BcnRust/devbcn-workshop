@@ -10,11 +10,11 @@ publish = false
 # internal
 api-lib = { workspace = true }
 # shuttle
-shuttle-runtime = "0.36.0"
-shuttle-actix-web = "0.36.0"
+shuttle-runtime = "0.47.0"
+shuttle-actix-web = "0.47.0"
 # db
 # shuttle-aws-rds = { version = "0.18.0", features = ["postgres"] }
-shuttle-shared-db = { version = "0.36.0", features = ["postgres"] }
+shuttle-shared-db = { version = "0.47.0", features = ["postgres", "sqlx"] }
 sqlx = { workspace = true }
 # actixs
 actix-web = { workspace = true }

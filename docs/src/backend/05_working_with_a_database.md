@@ -1,6 +1,6 @@
 # Working with a Database
 
-For our project we will use a [PostgreSQL](https://www.postgresql.org/) database. 
+For our project we will use a [PostgreSQL](https://www.postgresql.org/) database.
 
 You may be already thinking about how to provision that database both locally and in the cloud, and the amount of work that it will take to do so. But no worries, we will use [Shuttle](https://shuttle.rs) to do that for us.
 
@@ -20,7 +20,7 @@ Go to the `Cargo.toml` file in the `api > shuttle` folder and add the following 
 [dependencies]
 ...
 # database
-shuttle-shared-db = { version = "0.36.0", features = ["postgres"] }
+shuttle-shared-db = { version = "0.47.0", features = ["postgres", "sqlx"] }
 sqlx = { version = "0.7", default-features = false, features = [
     "tls-native-tls",
     "macros",
@@ -50,7 +50,7 @@ Now that we have the dependencies, we need to inject the database connection int
 Open the `main.rs` file in the `api > shuttle > src` folder and add the following code as the **first parameter of the `actix_web` function**:
 
 ```rust
- #[shuttle_shared_db::Postgres()] pool: sqlx::PgPool,
+ #[shuttle_shared_db::Postgres] pool: sqlx::PgPool,
  ````
 
 The function should look like this:
@@ -58,7 +58,7 @@ The function should look like this:
 ```rust
 #[shuttle_runtime::main]
 async fn actix_web(
-    #[shuttle_shared_db::Postgres()] pool: sqlx::PgPool,
+    #[shuttle_shared_db::Postgres] pool: sqlx::PgPool,
 ) -> ShuttleActixWeb<impl FnOnce(&mut ServiceConfig) + Send + Clone + 'static> {
     let config = move |cfg: &mut ServiceConfig| {
         cfg.service(hello_world);
