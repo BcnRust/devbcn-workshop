@@ -1,6 +1,6 @@
 # Films endpoints
 
-We are going to build now the endpoints needed to manage films. 
+We are going to build now the endpoints needed to manage films.
 
 For now, don't worry about the implementation details, we will cover them in the next chapter. We will return a `200 OK` response for all the endpoints.
 
@@ -27,7 +27,7 @@ Now, let's create a new function called `service` in the `films` module which wi
 > Can you guess how to create all the endpoints?
 
 ~~~admonish tip
-Take a look at the [actix_web::Scope](https://docs.rs/actix-web/4.3.1/actix_web/struct.Scope.html) documentation to learn how to share a common path prefix for all the routes in the scope.
+Take a look at the [actix_web::Scope](https://docs.rs/actix-web/4.9.0/actix_web/struct.Scope.html) documentation to learn how to share a common path prefix for all the routes in the scope.
 ~~~
 
 
@@ -145,7 +145,7 @@ Open it and just click on the `Send Request` link next to each request to send i
 ![Send Request](../assets/backend/16/send_request.png)
 
 Commit your changes:
-  
+
   ```bash
   git add .
   git commit -m "feat: add films endpoints"

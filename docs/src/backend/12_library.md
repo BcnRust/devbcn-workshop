@@ -59,8 +59,8 @@ async fn version(db: actix_web::web::Data<sqlx::PgPool>) -> String {
 }
 ```
 
-```admonish 
-If you are in **watch mode** or you try to **compile**, you will see that you don't get any kind of error. That's because the code in `health.rs` is **not being used yet**. 
+```admonish
+If you are in **watch mode** or you try to **compile**, you will see that you don't get any kind of error. That's because the code in `health.rs` is **not being used yet**.
 ```
 
 Let's use it now. Open the `api > lib > src > lib.rs` file, remove all the content, and add the following line at the top of the file:
@@ -72,7 +72,7 @@ pub mod health;
 A couple of things to take into account here:
 
 - `lib.rs` files are the default entrypoint for library crates.
-- The line we introduced in the `lib.rs` file is doing two things. 
+- The line we introduced in the `lib.rs` file is doing two things.
   - First of all, it is declaring a new module called `health` (hence the compiler will care about our `health.rs` file's content).
   - Secondly, it is making that module public. This means that we can access everything that we export from that module.
 
@@ -81,7 +81,7 @@ Now, if you compile, you should be getting errors from the compiler complaining 
 ```toml
 [dependencies]
 # actix
-actix-web = "4.3.1"
+actix-web = "4.9.0"
 # database
 sqlx = { version = "0.7", default-features = false, features = [
     "tls-native-tls",

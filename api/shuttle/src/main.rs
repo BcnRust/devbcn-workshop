@@ -6,7 +6,7 @@ use sqlx::Executor;
 
 #[shuttle_runtime::main]
 async fn actix_web(
-    #[shuttle_shared_db::Postgres()] pool: sqlx::PgPool,
+    #[shuttle_shared_db::Postgres] pool: sqlx::PgPool,
 ) -> ShuttleActixWeb<impl FnOnce(&mut ServiceConfig) + Send + Clone + 'static> {
     // initialize the database if not already initialized
     pool.execute(include_str!("../../db/schema.sql"))

@@ -4,14 +4,14 @@ We're going to get rid of the previous endpoints and create a health check endpo
 
 This endpoint will be very basic and will just **return a 200 OK response** with custom header containing the version (this is just for fun, not really needed at all).
 
-Armed with the knowledge we've gained so far, we should be able to handle this change. 
+Armed with the knowledge we've gained so far, we should be able to handle this change.
 
 
 ```admonish example title="Exercise: Create a health check endpoint"
 - The route should be `/health` and use the `GET` method.
 - The response should be a `200 OK` with a custom header named `version`containing the version (a `&str` containing "v0.0.1" for example).
 - As a hint, you can check the code in [Actix Web docs](https://actix.rs/docs/server) to see how to return a simple `200 OK` response.
-- You can also check out the [HttpResponse docs](https://docs.rs/actix-web/3.3.2/actix_web/struct.HttpResponse.html) to see how to add a header to the response.
+- You can also check out the [HttpResponse docs](https://docs.rs/actix-web/4.9.0/actix_web/struct.HttpResponse.html) to see how to add a header to the response.
 ```
 
 > Can you do it?
@@ -44,7 +44,7 @@ use sqlx::Executor;
 
 #[shuttle_runtime::main]
 async fn actix_web(
-    #[shuttle_shared_db::Postgres()] pool: sqlx::PgPool,
+    #[shuttle_shared_db::Postgres] pool: sqlx::PgPool,
 ) -> ShuttleActixWeb<impl FnOnce(&mut ServiceConfig) + Send + Clone + 'static> {
     // initialize the database if not already initialized
     pool.execute(include_str!("../../db/schema.sql"))
